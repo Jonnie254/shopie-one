@@ -1,1 +1,66 @@
-<p>sidebar works!</p>
+<div class="sidebar" [class.active]="isActive">
+    <div class="logo_content">
+        <div class="logo">
+            <img src="e-logo.png" alt="">
+            <div class="logo_name">Shopie</div>
+        </div>
+        <i class="pi pi-bars" id="btn" (click)="toggleSidebar()"></i>
+    </div>
+    <div class="nav_list">
+        <ul>
+            <li>
+                <i class="pi pi-search"></i>
+                <input type="text" placeholder="Search...">
+                <span class="tooltip">Search</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="pi pi-home"></i>
+                    <span class="links_name">Dashboard</span>
+                </a>
+                <span class="tooltip">Dashboard</span>
+            </li>
+            <li>
+                <a routerLink="customer">
+                    <i class="pi pi-user"></i>
+                    <span class="links_name">Customers</span>
+                </a>
+                <span class="tooltip">Customers</span>
+            </li>
+            <li>
+                <a routerLink="product">
+                    <i class="pi pi-cart-plus"></i>
+                    <span class="links_name">Products</span>
+                </a>
+                <span class="tooltip">Products</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="pi pi-chart-line"></i>
+                    <span class="links_name">Sales</span>
+                </a>
+                <span class="tooltip">Sales</span>
+            </li>
+            <li>
+                <a href="#">
+                    <i class="pi pi-user-edit"></i>
+                    <span class="links_name">Profile</span>
+                </a>
+                <span class="tooltip">Profile</span>
+            </li>
+            <li>
+                <a href="#" class="bottom">
+                    <i class="pi pi-sign-out"></i>
+                    <span class="links_name">Log out</span>
+                </a>
+                <span class="tooltip">Log Out</span>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="home_content">
+    <div class="text">
+        <app-home></app-home>
+    </div>
+
+</div>
