@@ -14,7 +14,7 @@ export class AuthService {
             const request = pool.request();
             
 
-            request.input('email', mssql.VarChar(255), logins.email);
+            request.input('email', mssql.VarChar, logins.email);
 
             const result = await request.execute('loginUser');
 

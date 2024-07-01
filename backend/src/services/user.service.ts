@@ -42,12 +42,7 @@ export class userService{
     async fetchSingleUser(user_id: string){
         let pool = await mssql.connect(sqlconfig);
         let user = (await pool.request().input('user_id', mssql.VarChar, user_id).query(`SELECT * FROM Users WHERE user_id = '${user_id}'`)).recordset;
-        console.log(user);
-        console.log('problem here');
-        
-        
-        
-        
+
         if(!user[0].user_id){
             return {
                 error: "User not found"
@@ -55,24 +50,6 @@ export class userService{
         }else{
             return {
                 user: user[0]
-            }
-        }
-    }
-
-    async getAllUsers(){
-        let pool = await mssql.connect(sqlconfig)
-        console.log("inside fetch all users");
-        
-        let result = (await pool.query('SELECT * FROM Users')).recordset
-        console.log(result);
-        
-        if(lodash.isEmpty(result)){
-            return{
-                message: "No users found"
-            }
-        }else{
-            return{
-                users: result
             }
         }
     }
@@ -102,6 +79,37 @@ export class userService{
             }
         }
     
+    }
+
+    async updateUserDetails(email: string, password: string){
+
+        let pool =  await mssql.connect(sqlconfig)
+        let user_password = v4()
+        console.log(user_password)
+        let emailExist = (await pool.request().query(`SELECT * FROM Users WHERE email = '${email}'`)).recordset
+
+        if(lodash.isEmpty(emailExist)){
+            return {
+                error: "Email doesn't exists"
+            }
+        }else{
+            let result = (await pool.request()
+        .input('email', emailExist[0].email)
+        .input('password', user_password)
+        .execute('updateUserDetails')).rowsAffected
+
+        if(result[0] < 1){
+            return {
+                error: "Unable to update user details"
+            }
+        }else{
+            return {
+                message: "User password updated successfully",
+                 email,
+                 user_password
+            }
+        }
+        }
     }
 
     

@@ -4,8 +4,8 @@ Content-Type: application/json
 
 {
     "username": "Timo",
-    "email": "Timo@example.com",
-    "password": "timo"
+    "email": "John@example.com",
+    "password": "john"
 }
 
 ###LOGIN USER
@@ -13,12 +13,12 @@ POST http://localhost:5700/users/login
 Content-Type: application/json
 
 {
-    "email": "Timo@example.com",
-    "password": "timo"
+    "email": "user@example.com",
+    "password": "user"
 }
 
 ### FETCH SINGLE USER
-GET http://localhost:5700/users/58084774-3d48-4fa0-8df5-f64f6561d69f
+GET http://localhost:5700/users/1edab374-b9a4-49c4-9c6a-b611b6817668
 Content-Type: application/json
 
 
@@ -30,6 +30,11 @@ Content-Type: application/json
     "user_id":"58084774-3d48-4fa0-8df5-f64f6561d69f"
 }
 
-### FETCH ALL USERS
-GET http://localhost:5700/users/fetch
+
+###CHANGE USER PASSWORD
+PUT http://localhost:5700/users/John@example.com
 Content-Type: application/json
+
+{
+    "password": "password"
+}

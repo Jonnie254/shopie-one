@@ -20,19 +20,6 @@ export class UserController {
         }
     }
 
-    async fetchAllUsers(req: Request, res: Response){
-        try {
-            let result = await UserService.getAllUsers()
-            
-            return res.status(201).json(result)
-
-        } catch (error) {
-            return res.json({
-                error
-            })
-        }
-    }
-
     async getSingleUser(req: Request, res: Response){
         try{
             let{user_id} = req.params
@@ -59,6 +46,26 @@ export class UserController {
         }catch (error){
             return res.json({
                 error: "error switching roles"
+            })
+        }
+    }
+
+    async updateUser(req: Request, res: Response){
+
+        try{
+            let email = req.params.email
+            let {password} = req.body
+
+            let user = {
+                email: email,
+                password
+            }
+
+            let response = await UserService.updateUserDetails(email, password)
+            return res.status(200).json(response)
+        }catch(error){
+            return res.json({
+                error: error
             })
         }
     }
