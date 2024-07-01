@@ -1,0 +1,19 @@
+{
+  "name": "shopie",
+  "version": "1.0.0",
+  "description": "An e-commerce platform",
+  "main": "server.js",
+  "scripts": {
+    "start:build": "tsc -w",
+    "start:run": "nodemon dist/server.js",
+    "start": "concurrently npm:start:*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "MUCHIRI",
+  "license": "ISC",
+  "dependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "^5.1.1",
+    "nodemon": "^3.1.4"
+  }
+}
