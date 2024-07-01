@@ -3,10 +3,9 @@
         <div class="img">
             <h3>sign In</h3>
             <img src="personalinfo.svg" alt="">
-
         </div>
         <div class="login-container">
-            <form>
+            <form #loginForm="ngForm">
                 <img src="profilepic.svg" class="avatar">
                 <h2>Welcome</h2>
                 <div class="input-div">
@@ -14,8 +13,13 @@
                         <i class="pi pi-user"></i>
                     </div>
                     <div class="div">
-                        <input type="text" class="input" placeholder=" " required>
-                        <label for="username">Username</label>
+                        <input type="text" name="email" #email="ngModel" [(ngModel)]="signInObj.email"
+                            placeholder="Email" required
+                            pattern="(^\s*$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$)">
+                    </div>
+                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                        <p *ngIf="email.errors?.['required']">Email is required</p>
+                        <p *ngIf="email.errors?.['pattern']">Email is invalid</p>
                     </div>
                 </div>
                 <div class="input-div two">
@@ -25,6 +29,9 @@
                     <div class="div">
                         <input type="password" class="input" placeholder=" " required>
                         <label for="password">Password</label>
+                    </div>
+                    <div class="error-message"> <!-- Moved the error message inside the input-div -->
+                        <p>Password is required</p> <!-- Example error message for password -->
                     </div>
                 </div>
                 <a routerLink="admin">Forgot Password?</a>
