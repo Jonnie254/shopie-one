@@ -1,0 +1,24 @@
+<div class="hero">
+    <nav>
+        <img src="e-logo.png" alt="logo" class="logo">
+        <img src="profilepic.svg" class="avatar" (click)="toggleMenu()">
+        <div class="sub-menu-wrap" [ngClass]="{'active': isSubMenuActive}" id="subMenu">
+            <div class="sub-menu">
+                <div class="user-info">
+                    <h3>James John</h3>
+                </div>
+                <hr>
+                <a href="#" class="sub-menu-link">
+                    <i class="pi pi-user-edit"></i>
+                    <p>Profile</p>
+                    <span>></span>
+                </a>
+                <a href="#" class="sub-menu-link">
+                    <i class="pi pi-sign-out"></i>
+                    <p>Sign Out</p>
+                    <span>></span>
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>
