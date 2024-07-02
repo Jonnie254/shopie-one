@@ -3,18 +3,14 @@ import { Component } from '@angular/core';
 import { UserRegister } from '../../interfaces/users';
 import { FormGroup, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
-import { ToastModule } from 'primeng/toast';
-import { MessageService } from 'primeng/api';
-import { ButtonModule } from 'primeng/button';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, RouterLink, ToastModule, ButtonModule],
+  imports: [CommonModule, FormsModule, RouterLink],
   templateUrl: './register.component.html',
   styleUrl: './register.component.css',
-  providers: [MessageService],
 })
 export class RegisterComponent {
   constructor(private authservice: AuthService) {}
