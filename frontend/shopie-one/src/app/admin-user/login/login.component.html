@@ -1,42 +1,32 @@
-<div class="main-container">
+<div class="main">
     <div class="container">
-        <div class="img">
-            <h3>sign In</h3>
+        <div class="header">
+            <h3>Welcome to shopie</h3>
             <img src="personalinfo.svg" alt="">
         </div>
-        <div class="login-container">
-            <form #loginForm="ngForm">
-                <img src="profilepic.svg" class="avatar">
-                <h2>Welcome</h2>
-                <div class="input-div">
-                    <div class="icon">
-                        <i class="pi pi-user"></i>
-                    </div>
-                    <div class="div">
-                        <input type="text" name="email" #email="ngModel" [(ngModel)]="signInObj.email"
-                            placeholder="Email" required
-                            pattern="(^\s*$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$)">
-                    </div>
-                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
-                        <p *ngIf="email.errors?.['required']">Email is required</p>
-                        <p *ngIf="email.errors?.['pattern']">Email is invalid</p>
-                    </div>
+        <form id="mainForm" (ngSubmit)="login()" #loginForm="ngForm">
+            <h2>Sign In</h2>
+            <div class="form-in">
+                <label for="email">Email</label>
+                <input type="text" name="email" #email="ngModel" [(ngModel)]="signInObj.email" placeholder="Email"
+                    required
+                    pattern="(^\s*$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$)">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                    <p *ngIf="email.errors?.['required']">Email is required</p>
+                    <p *ngIf="email.errors?.['pattern']">Email is invalid</p>
                 </div>
-                <div class="input-div two">
-                    <div class="icon">
-                        <i class="pi pi-key"></i>
-                    </div>
-                    <div class="div">
-                        <input type="password" class="input" placeholder=" " required>
-                        <label for="password">Password</label>
-                    </div>
-                    <div class="error-message"> <!-- Moved the error message inside the input-div -->
-                        <p>Password is required</p> <!-- Example error message for password -->
-                    </div>
+            </div>
+            <div class="form-in">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" autocomplete="off"
+                    name="password" #password="ngModel" [(ngModel)]="signInObj.password" required>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                    <p *ngIf="password.errors?.['required']">Password is required</p>
                 </div>
-                <a routerLink="admin">Forgot Password?</a>
-                <button type="submit" class="btn">Login</button>
-            </form>
-        </div>
+            </div>
+            <button type="submit" [disabled]="loginForm.invalid">Login</button>
+            <p>Already have an account? <a routerLink="/register">Sign up</a></p>
+            <p>Forgot password? <a routerLink="/forgot-password">Reset password</a></p>
+        </form>
     </div>
 </div>

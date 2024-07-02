@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "start:build": "tsc -w",
     "start:run": "nodemon dist/server.js",
@@ -13,8 +13,20 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "@types/concurrently": "^7.0.0",
+    "@types/cors": "^2.8.17",
+    "@types/mssql": "^9.1.5",
     "@types/uuid": "^10.0.0",
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "mssql": "^11.0.0",
     "nodemon": "^3.1.4",
     "uuid": "^10.0.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.2",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/lodash": "^4.17.6"
   }
 }
