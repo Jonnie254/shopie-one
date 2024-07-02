@@ -1,37 +1,54 @@
 <div class="container">
     <div class="overlay" *ngIf="showOverlay"></div>
     <div class="product-form" [ngClass]="{ 'visible': showProductForm }">
-        <form>
+        <form [formGroup]="productForm" (ngSubmit)="onSubmit()">
             <div class="heading">
-                <h2>Add Product</h2>
+                <h2>{{ editMode ? 'Update Product' : 'Add Product' }}</h2>
                 <i class="pi pi-times" (click)="toggleProductForm()"></i>
             </div>
             <div class="form-group">
                 <label for="product">Name</label>
-                <input type="text" id="product" />
+                <input type="text" formControlName="name" required />
+                <div *ngIf="f['name'].invalid && (f['name'].dirty || f['name'].touched)" class="error-message">
+                    <p *ngIf="f['name'].errors?.['required']">Name is required</p>
+                </div>
             </div>
             <div class="form-group">
                 <label for="Description">Description</label>
-                <textarea name="description" id="description" cols="5" rows="3"></textarea>
+                <input name="description" id="description" cols="5" rows="3" formControlName="description" required>
+                <div *ngIf="productForm.controls['description'].invalid && 
+                                      (productForm.controls['description'].dirty || productForm.controls['description'].touched)"
+                    class="error-message">
+                    <p *ngIf="productForm.controls['description'].errors?.['required']">Description is required</p>
+                </div>
             </div>
             <div class="price-quantity">
                 <div class="form-group">
                     <label for="price">Price</label>
-                    <input type="text" id="price" />
+                    <input type="text" id="price" formControlName="price" />
+                    <div *ngIf="f['price'].invalid && (f['price'].dirty || f['price'].touched)" class="error-message">
+                        <p *ngIf="f['price'].errors?.['required']">Price is required</p>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="quantity">Quantity</label>
-
-                    <input type="text" id="quantity" />
+                    <input type="text" id="quantity" formControlName="quantity" />
+                    <div *ngIf="f['quantity'].invalid && (f['quantity'].dirty || f['quantity'].touched)"
+                        class="error-message">
+                        <p *ngIf="f['quantity'].errors?.['required']">Quantity is required</p>
+                    </div>
                 </div>
             </div>
-            <div class="form-group ">
-                <label for="image">Image</label>
-                <input type="file" class="file-image" id="image" />
+            <div class="form-group">
+                <label for="images">Images</label>
+                <input type="file" id="images" (change)="getImagesUrl($event)">
+                <div *ngIf="spinnerVisible" class="spinner">
+                    <i class="pi pi-spin pi-spinner" style="font-size: 1.2rem; color: blue; margin: 2px;"></i>
+                </div>
             </div>
             <div class="form-group">
                 <label for="category">Category</label>
-                <select name="category" id="category">
+                <select name="category" id="category" formControlName="category">
                     <option value="category 1">Category 1</option>
                     <option value="category 2">Category 2</option>
                     <option value="category 3">Category 3</option>
@@ -39,8 +56,10 @@
             </div>
             <div class="form-group">
                 <div class="buttons">
-                    <button class="add btn"><i class="pi pi-times"></i>Cancel</button>
-                    <button class="update btn "><i class="pi pi-plus"></i>Add</button>
+                    <button type="button" class="add btn" (click)="toggleProductForm()"><i
+                            class="pi pi-times"></i>Cancel</button>
+                    <button type="submit" class="update btn"><i class="pi pi-plus"></i>{{ editMode ? 'Update' : 'Add'
+                        }}</button>
                 </div>
             </div>
         </form>
@@ -51,7 +70,7 @@
             <p>Manage Products</p>
             <div>
                 <input placeholder="product" />
-                <button class="add_new" (click)="toggleProductForm()">Add Product</button>
+                <button class="add_new" (click)="  onAddProduct()">Add Product</button>
             </div>
         </div>
         <div class="table_selection">
@@ -67,37 +86,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Product 1</td>
-                        <td>100</td>
-                        <td>Category 1</td>
-                        <td>10</td>
+                    <tr *ngFor="let product of products; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ product.name }}</td>
+                        <td>{{ product.price }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.quantity }}</td>
                         <td>
-                            <button class="edit"><i class="pi pi-pen-to-square"></i></button>
-                            <button class="delete"><i class="pi pi-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Product 2</td>
-                        <td>200</td>
-                        <td>Category 2</td>
-                        <td>20</td>
-                        <td>
-                            <button class="edit"><i class="pi pi-pen-to-square"></i></button>
-                            <button class="delete"><i class="pi pi-trash"></i></button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Product 3</td>
-                        <td>300</td>
-                        <td>Category 3</td>
-                        <td>30</td>
-                        <td>
-                            <button class="edit"><i class="pi pi-pen-to-square"></i></button>
-                            <button class="delete"><i class="pi pi-trash"></i></button>
+                            <button class="edit" (click)="onEditProduct(product)"><i
+                                    class="pi pi-pen-to-square"></i></button>
+                            <button class="delete" (click)="onDeleteProduct(product)"><i
+                                    class="pi pi-trash"></i></button>
                         </td>
                     </tr>
                 </tbody>

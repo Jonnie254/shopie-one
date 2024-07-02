@@ -1,0 +1,80 @@
+.container {
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f1f1f1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 800px;
+  gap: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+}
+.container-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 40%;
+  height: 500px;
+  align-items: center;
+  justify-content: center;
+}
+span {
+  color: blue;
+}
+.profile img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 60%;
+}
+form {
+  width: 90%;
+}
+form label {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+form input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+form input:focus {
+  outline: none;
+  border: 1px solid blue;
+}
+form button {
+  width: 100%;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+form button:hover {
+  background-color: #3d7bcd;
+}
+.error-message {
+  color: red;
+  font-size: 1.2em;
+}
