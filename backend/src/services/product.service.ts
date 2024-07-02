@@ -16,6 +16,8 @@ export class productService{
      .input('product_description', mssql.VarChar,product.product_description )
      .input('product_image', mssql.VarChar, product.product_image)
      .input('product_price', mssql.Float, product.product_price)
+     .input('product_quantity', mssql.Int, product.product_quantity)
+     .input('product_category', mssql.VarChar, product.product_category)
      .execute('createProduct')).rowsAffected
 
      if(result[0] == 1){
@@ -46,5 +48,77 @@ export class productService{
 
     async fetchSingleProducts(product_id: string){
         let pool = await mssql.connect(sqlconfig)
+        let result =  (await pool.request()
+        .input('product_id', mssql.VarChar, product_id)
+        .query(`SELECT * FROM Products WHERE product_id = '${product_id}'`)).recordset
+
+        if(!result[0].product_id){
+            return{
+                message: 'Product not found'
+            }
+        }else{
+            return{
+                product: result[0]
+            }
+        }
+    }
+
+    async updateProduct(products: ProductDetails){
+        let pool = await mssql.connect(sqlconfig)
+        let productExists = (await pool.request().query(`SELECT * FROM Products WHERE product_id = '${products.product_id}'`)).recordset
+
+        if(lodash.isEmpty(productExists)){
+            return{
+                message: 'Product not found'
+            }
+        }else{
+            let result = await (await pool.request()
+            .input('product_id', mssql.VarChar, products.product_id)
+            .input('product_name', mssql.VarChar, products.product_name)
+            .input('product_description', mssql.VarChar, products.product_description)
+            .input('product_image', mssql.VarChar, products.product_image)
+            .input('product_price', mssql.Float, products.product_price)
+            .input('product_quantity', mssql.Int, products.product_quantity)
+            .input('product_category', mssql.VarChar, products.product_category)
+            .execute('updateProduct')).rowsAffected
+            console.log(result[0])
+            if(result[0] < 1){
+                return{
+                    message: 'Error updating product'
+                }
+            }else{
+                return{
+                    message: 'Product updated successfully'
+                }
+            }
+
+        }
+    }
+
+    async deleteProduct(product_id : string){
+
+        try {
+            let pool = await mssql.connect(sqlconfig)
+            let productExists = (await pool.request()
+                .input('product_id', mssql.VarChar, product_id)
+                .query(`SELECT * FROM Products WHERE product_id = @product_id`)).recordset
+
+                if(productExists.length === 0){
+                    return{
+                        message: 'Product not found'
+                    }
+                }
+
+                await pool.request()
+                .input('product_id', mssql.VarChar, product_id)
+                .execute('deleteProduct')
+
+                return{
+                    message: 'Product deleted successfully'
+                }
+        } catch (error) {
+            console.error('SQL ERROR', error)
+            throw error;
+        }
     }
 }

@@ -1,8 +1,8 @@
 import express, { NextFunction, Request, Response } from 'express';
 import bodyParser from 'body-parser';
 import user_router from './routers/user.routes';
-
 import cors from 'cors'
+import product_router from './routers/product.routes';
 
 const app = express();
 
@@ -38,6 +38,7 @@ app.use(express.json());
 app.use(cors())
 
 app.use('/users', user_router);
+app.use('/products', product_router)
 
 
 app.use((err:Error, req:Request, res:Response, next:NextFunction)=>{
