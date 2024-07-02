@@ -41,21 +41,18 @@ export class LoginComponent {
             },
             (error) => {
               console.error('Error fetching user details:', error);
-              // Handle error, show error message, etc.
               this.loginError = true;
               this.error = 'Failed to fetch user details';
             }
           );
         } else {
           console.error('Error logging in:', res.error);
-          // Handle error, show error message, etc.
           this.loginError = true;
           this.error = 'Invalid credentials';
         }
       },
       (error) => {
         console.error('Error logging in:', error);
-        // Handle error, show error message, etc.
         this.loginError = true;
         this.error = 'Failed to authenticate';
       }
