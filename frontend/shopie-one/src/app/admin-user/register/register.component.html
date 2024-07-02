@@ -1,0 +1,49 @@
+<div class="main">
+    <div *ngIf="registerSuccess" class="success-message">
+        <i class="pi pi-check"></i>
+        {{successmessage}}
+    </div>
+    <div *ngIf="registerError" class="error-message-top">
+        <i class="pi pi-times"></i>
+        {{registerError}}
+    </div>
+    <div class="container">
+        <div class="header">
+            <h2>Welcome to shopie</h2>
+            <img src="bg.svg" alt="Background Image">
+        </div>
+        <form id="mainForm" (ngSubmit)="onRegister()" #registerForm="ngForm">
+            <h2>Sign Up Form</h2>
+            <div class="form-in">
+                <label for="name">Name</label>
+                <input type="text" name="name" #fullname="ngModel" [(ngModel)]="signupObj.username" placeholder="Name"
+                    required minlength="5">
+                <div class="error-message">
+                    <p *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)">Name is required</p>
+                    <p *ngIf="fullname.errors?.['minlength']">Name must be at least 5 characters</p>
+                </div>
+            </div>
+            <div class="form-in">
+                <label for="email">Email</label>
+                <input type="text" name="email" #email="ngModel" [(ngModel)]="signupObj.email" placeholder="Email"
+                    required
+                    pattern="(^\s*$|^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$)">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                    <p *ngIf="email.errors?.['required']">Email is required</p>
+                    <p *ngIf="email.errors?.['pattern']">Email is invalid</p>
+                </div>
+            </div>
+            <div class="form-in">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" autocomplete="off"
+                    name="password" #password="ngModel" [(ngModel)]="signupObj.password" required>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                    <p *ngIf="password.errors?.['required']">Password is required</p>
+                </div>
+            </div>
+            <button type="submit" [disabled]="registerForm.invalid">Register</button>
+            <p>Already have an account? <a routerLink="/login">Login</a></p>
+        </form>
+
+    </div>
+</div>
