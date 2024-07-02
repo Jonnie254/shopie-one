@@ -20,3 +20,9 @@ export interface token_details {
     message: string;
   };
 }
+
+export interface updateProfile {
+  username: string;
+  email: string;
+  password: string;
+}

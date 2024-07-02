@@ -171,6 +171,7 @@ tbody tr td {
 .heading {
   display: flex;
   justify-content: space-between;
+  text-align: center;
 }
 .heading i {
   cursor: pointer;
@@ -251,4 +252,8 @@ form label {
 
 .overlay.visible {
   display: block;
+}
+.error-message {
+  color: red;
+  text-align: left;
 }

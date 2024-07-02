@@ -1,0 +1,52 @@
+<div class="container">
+    <h1>Update Profile</h1>
+    <div class="wrapper">
+        <div class="container-profile">
+            <div class="profile">
+                <img src="" alt="profile" class="profile-image">
+            </div>
+            <div profile-info>
+                <a> <span>Change</span> picture</a>
+            </div>
+        </div>
+        <div class="profile-form">
+            <form #loginform="ngForm">
+                <label for="name">Name</label>
+                <br>
+                <br>
+                <input type="text" name="name" #fullname="ngModel" [(ngModel)]="updateProfileObj.username"
+                    placeholder="Name" required minlength="5">
+                <div class="error-message">
+                    <p *ngIf="fullname.invalid && (fullname.dirty || fullname.touched)">Name is required</p>
+                    <p *ngIf="fullname.errors?.['minlength']">Name must be at least 5 characters</p>
+                </div>
+                <br>
+                <label for="email">Email</label>
+                <br>
+                <br>
+                <input type="email" name="email" #email="ngModel" [(ngModel)]="updateProfileObj.email" required
+                    placeholder="Email"
+                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(?:[a-zA-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum)$">
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="error-message">
+                    <p *ngIf="email.errors?.['required']">Email is required</p>
+                    <p *ngIf="email.errors?.['pattern']">Email is invalid</p>
+                </div>
+                <br>
+                <br>
+                <label for="password">Password</label>
+                <br>
+                <br>
+                <input type="password" name="password" #password="ngModel" [(ngModel)]="updateProfileObj.password"
+                    placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                <div *ngIf="password.invalid && (password.dirty || password.touched)" class="error-message">
+                    <p *ngIf="password.errors?.['required']">Password is required</p>
+                    <p *ngIf="password.errors?.['pattern']">Password is invalid</p>
+                </div>
+                <br>
+                <br>
+                <button type="submit">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
