@@ -1,5 +1,5 @@
 body {
-  height: 110vh;
+  height: auto;
   width: 100vw;
   background-color: rgb(221, 221, 221);
   margin: 0;
@@ -28,6 +28,9 @@ body {
   width: 70vw;
   background-color: white;
   border-radius: 10px;
+}
+.wholenavbar .shoppingicon img{
+  border-radius: 5px;
 }
 
 a {
@@ -104,6 +107,22 @@ a:hover {
 .searchproducts button:hover {
   background-color: rgb(139, 127, 127);
 }
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 10px; /* Add gap between elements */
+}
+
+.top-searches-dropdown {
+  height: 40px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
 
 .top-searches {
   margin-top: 10px;
@@ -113,28 +132,52 @@ a:hover {
 
 .itemssection {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 92vw;
+  flex-direction: row; /* Change to column direction */
+  flex-wrap: wrap; /* Allow items to wrap to the next line */
+  justify-content: center; /* Center the items horizontally */
+  gap: 20px; /* Add space between cards */
   height: auto;
-  background-color: white;
-  margin-top: 20px;
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  width: 92vw; /* Ensure section takes full width */
+  margin-top: 30px; /* Add top margin to create space */
+}
+.itemssection > p {
+  align-self: flex-start; /* Align title to the start */
+  margin: 0; /* Remove default margin */
+}
+.itemssection > hr {
+  width: 100%; /* Make horizontal line full width */
+  margin: 10px 0; /* Add margin to separate elements */
 }
 
 .card {
-  width: 80%;
-  background-color: rgb(221, 221, 221);
-  border-radius: 10px;
+  width: calc(20% - 20px); /* Slim the card */
+  background-color: white; /* Change background color */
+  border-radius: 15px; /* Add border radius */
   padding: 20px;
   text-align: center;
   transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  word-wrap: break-word; /* Wrap the text inside the card */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge card on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+}
+.card img {
+  width: 100%; /* Ensure the image fits within the card */
+  height: auto;
+  margin-bottom: 10px; /* Add space below image */
 }
 
-.card:hover {
-  transform: scale(1.00);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+.card p {
+  margin: 5px 0; /* Add space between paragraphs */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ensure text does not overflow */
+  white-space: nowrap; /* Prevent text from wrapping */
 }
+
+.price {
+  color: red;
+  font-weight: bold; /* Make price bold */
+}
+
