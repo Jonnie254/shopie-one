@@ -1,12 +1,10 @@
 <body>
-  <app-user-navbar></app-user-navbar>
-
-  <div class="usercart" *ngIf="item">
+  <div class="usercart" *ngIf="product">
     <div class="image">
-      <img [src]="item.img" alt="{{item.title}}">
+      <img [src]="product.product_image" alt="">
     </div>
     <div class="description">
-      <div class="description2">{{item.description}}</div>
+      <div class="description2">{{product.product_description}}</div>
       <div class="rating">
         <span class="star">&#9733;</span>
         <span class="star">&#9733;</span>
@@ -14,10 +12,10 @@
         <span class="star">&#9733;</span>
         <span class="star">&#9733;</span>
       </div>
-      <div class="price">{{item.price}}</div>
+      <div class="price">{{product.product_price}}</div>
       <div class="quantity">Quantity: <button>-</button> <span>1</span> <button>+</button></div>
 
-      <button>Add to cart</button>
+      <button (click)="addToCart()">Add to cart</button>
     </div>
   </div>
 </body>

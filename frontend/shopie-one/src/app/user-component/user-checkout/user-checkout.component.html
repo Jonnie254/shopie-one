@@ -1,17 +1,42 @@
-<body>
-  <app-user-navbar></app-user-navbar>
-
-  <div class="usercart">
-    <div class="image">
-      <img src="/headphones.png" alt="">
-    </div>
-    <div class="description">
-      <div class="description2">The latest hot-selling P9 Pro Max TWS microphone noise-cancelling bass subwoofer fashion sports headphones</div>
-
-      <div class="price"> Total : Ksh. 799</div>
-      <div class="quantity">Quantity: <button>-</button> <span>1</span> <button>+</button></div>
-
-      <button>Proceed to checkout</button>
+<div class="table">
+  <div class="table_header">
+    <p>Manage Products</p>
+    <div>
+      <input placeholder="product" />
+      <button class="add_new">Checkout</button>
     </div>
   </div>
-</body>
+  <div class="table_selection">
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items">
+          <td>{{ item.product_name }}</td>
+          <td>{{ item.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td>
+            <button class="edit"><i class="pi pi-pen-to-square"></i></button>
+            <button class="delete" (click)="removeItem(item.product_id || '')">
+              <i class="pi pi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination">
+    <div><i class="pi pi-angle-double-left"></i></div>
+    <div><i class="pi pi-angle-left"></i></div>
+    <div>1</div>
+    <div>2</div>
+    <div><i class="pi pi-angle-right"></i></div>
+    <div><i class="pi pi-angle-double-right"></i></div>
+  </div>
+</div>

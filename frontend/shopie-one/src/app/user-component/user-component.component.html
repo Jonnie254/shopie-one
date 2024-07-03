@@ -1,6 +1,4 @@
-<body>
-  <app-user-navbar></app-user-navbar>
-
+<div class="container">
   <div class="searchproducts">
     <div class="search-container">
       <input type="text" placeholder="Search for products...">
@@ -14,19 +12,13 @@
       </select>
     </div>
   </div>
-
-
   <div class="itemssection">
-
-    <div class="card" *ngFor="let item of items">
-      <img [src]="item.img" alt="">
-      <p>{{ item.title }}</p>
-      <br>
-      <p>{{ item.description }}</p>
-      <p class="price">{{ item.price }}</p>
-      <button class="view-button" (click)="viewItem(item)">View</button>
+    <div class="card" *ngFor="let product of products; let i = index">
+      <img [src]="product.product_image" alt="">
+      <p>{{ product.product_name}}</p>
+      <p>{{ product.product_price }}</p>
+      <!-- <button class="view-button" routerLink="login">Add to cart</button> -->
+      <button class="view-button" (click)="navitagateToProduct(i)">View</button>
     </div>
-
-
   </div>
-</body>
+</div>

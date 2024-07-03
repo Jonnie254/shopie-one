@@ -18,7 +18,7 @@ Content-Type: application/json
 
 
 ###VIEW ONE PRODUCT
-GET http://localhost:5700/products/05cc4ff3-0440-4391-9cac-33973afbd44e
+GET http://localhost:5700/products/5a7e2016-df7a-44e9-8f42-a47f49b4bab3
 
 
 
@@ -36,4 +36,4 @@ Content-Type: application/json
 }
 
 ###DELETE PRODUCT
-DELETE http://localhost:5700/products/cc4bfbf2-f2a4-4571-bf98-53aedc24a615
+DELETE http://localhost:5700/products/96693015-c1ef-4615-8fe3-5cf8c8868c1c

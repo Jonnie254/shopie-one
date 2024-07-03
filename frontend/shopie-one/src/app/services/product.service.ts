@@ -20,6 +20,9 @@ export class ProductService {
       updateProduct
     );
   }
+  getProduct(product_id: string) {
+    return this.http.get(`http://localhost:5700/products/${product_id}`);
+  }
   deleteProduct(product_id: string) {
     return this.http.delete(`http://localhost:5700/products/${product_id}`);
   }
