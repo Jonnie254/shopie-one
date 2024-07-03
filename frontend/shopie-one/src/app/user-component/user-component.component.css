@@ -176,6 +176,27 @@ a:hover {
   white-space: nowrap; /* Prevent text from wrapping */
 }
 
+/* Card button styles */
+.view-button {
+  display: block;
+  margin: 10px auto 0; /* Center the button and add margin */
+  padding: 10px 20px;
+  font-size: 16px;
+  color: white;
+  background-color: rgb(20, 24, 88);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+/* Button hover effect */
+.view-button:hover {
+  background-color: rgb(139, 127, 127);
+  transform: scale(1.05);
+}
+
+
 .price {
   color: red;
   font-weight: bold; /* Make price bold */
