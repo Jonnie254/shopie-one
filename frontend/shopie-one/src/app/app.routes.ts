@@ -8,10 +8,12 @@ import { RegisterComponent } from './admin-user/register/register.component';
 import { ProfileComponent } from './admin-user/profile/profile.component';
 import { UserNavbarComponent } from './user-component/user-navbar/user-navbar.component';
 import { UserCartComponent } from './user-component/user-cart/user-cart.component';
+import { ForgotPasswordComponent } from './admin-user/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
+  {path: 'forgot-password', component: ForgotPasswordComponent},
   { path: 'register', component: RegisterComponent },
   {
     path: 'admin',
