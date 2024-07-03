@@ -1,9 +1,9 @@
-export interface Product {
+export interface ProductDetails {
   product_id?: string;
-  name: string;
-  description: string;
-  price: number;
-  quantity: number;
-  image: string;
-  category: string;
+  product_name: string;
+  product_description: string;
+  product_image: string;
+  product_price: number;
+  product_quantity: number;
+  product_category: string;
 }

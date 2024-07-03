@@ -49,6 +49,7 @@ nav {
   align-items: center;
 }
 .user-info h3 {
+  color: red;
   font-size: 20px;
 }
 .sub-menu hr {
