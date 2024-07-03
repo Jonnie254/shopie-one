@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { Product } from '../../interfaces/products';
+import { ProductService } from '../../services/product.service';
+import { ProductDetails } from '../../interfaces/products';
 
 @Component({
   selector: 'app-products',
@@ -24,35 +24,27 @@ export class ProductsComponent {
   showOverlay: boolean = false;
   editMode: boolean = false;
   currentProduct: any = null;
-  products: any[] = [
-    {
-      name: 'Product 1',
-      description: 'Desc 1',
-      price: 100,
-      quantity: 10,
-      category: 'Category 1',
-      image: '',
-    },
-    {
-      name: 'Product 2',
-      description: 'Desc 2',
-      price: 200,
-      quantity: 20,
-      category: 'Category 2',
-      image: '',
-    },
-    {
-      name: 'Product 3',
-      description: 'Desc 3',
-      price: 300,
-      quantity: 30,
-      category: 'Category 3',
-      image: '',
-    },
-  ];
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+  products: ProductDetails[] = [];
+  isDeleteModalVisible: boolean = false;
+  productToDelete: ProductDetails | null = null;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private productService: ProductService) {
+    this.getAllProducts();
     this.createForm();
+  }
+
+  getAllProducts() {
+    this.productService.getProducts().subscribe(
+      (response: any) => {
+        console.log('Products:', response);
+        this.products = response.products;
+      },
+      (error) => {
+        console.error('Error fetching products:', error);
+      }
+    );
   }
 
   get f() {
@@ -61,12 +53,12 @@ export class ProductsComponent {
 
   createForm() {
     this.productForm = this.fb.group({
-      name: ['', Validators.required],
-      description: ['', Validators.required],
-      price: ['', Validators.required],
-      quantity: ['', Validators.required],
-      image: ['', Validators.required],
-      category: ['', Validators.required],
+      product_name: ['', Validators.required],
+      product_description: ['', Validators.required],
+      product_price: ['', Validators.required],
+      product_quantity: ['', Validators.required],
+      product_image: ['', Validators.required],
+      product_category: ['Clothes', Validators.required],
     });
   }
 
@@ -82,6 +74,7 @@ export class ProductsComponent {
     this.showProductForm = !this.showProductForm;
     this.showOverlay = !this.showOverlay;
   }
+
   imageurl: string = '';
   getImagesUrl(event: any) {
     const file = event.target.files[0];
@@ -89,7 +82,7 @@ export class ProductsComponent {
     if (file) {
       const formData = new FormData();
       formData.append('file', file);
-      formData.append('upload_preset', 'e-commerce');
+      formData.append('upload_preset', 'tours_travel');
       formData.append('cloud_name', 'do9a5sjgi');
       this.imageurl = '';
       this.showSpinner();
@@ -101,7 +94,7 @@ export class ProductsComponent {
         .then((response) => response.json())
         .then((result) => {
           this.imageurl = result.url;
-          this.productForm.patchValue({ images: this.imageurl });
+          this.productForm.patchValue({ product_image: this.imageurl });
           setTimeout(() => {
             this.hideSpinner();
           }, 2000);
@@ -112,38 +105,115 @@ export class ProductsComponent {
         });
     }
   }
+
+  showDeleteModal(product: ProductDetails): void {
+    this.productToDelete = product;
+    this.isDeleteModalVisible = true;
+  }
+
+  hideDeleteModal(): void {
+    this.isDeleteModalVisible = false;
+    this.productToDelete = null;
+  }
+
+  confirmDelete(): void {
+    if (this.productToDelete && this.productToDelete.product_id) {
+      this.onDeleteProduct(this.productToDelete.product_id);
+    } else {
+      console.error('Product ID is undefined.');
+    }
+  }
   onAddProduct() {
     this.editMode = false;
     this.productForm.reset();
     this.toggleProductForm();
   }
 
-  onEditProduct(product: any) {
+  patchFormValues(product: ProductDetails) {
+    this.productForm.patchValue({
+      product_name: product.product_name,
+      product_description: product.product_description,
+      product_price: product.product_price,
+      product_quantity: product.product_quantity,
+      product_image: product.product_image,
+      product_category: product.product_category,
+    });
+  }
+
+  onEditProduct(product: ProductDetails) {
     this.editMode = true;
     this.currentProduct = product;
+    this.patchFormValues(product);
     this.productForm.patchValue(product);
     this.toggleProductForm();
   }
 
-  onSubmit() {
+  createProduct() {
+    console.log('Form Validity:', this.productForm.valid);
+    console.log('Form Values:', this.productForm.value);
+
     if (this.productForm.valid) {
+      const product = this.productForm.value;
+
       if (this.editMode) {
-        // Update product
-        const index = this.products.findIndex((p) => p === this.currentProduct);
-        if (index !== -1) {
-          this.products[index] = this.productForm.value;
+        const productId = this.currentProduct.product_id;
+        if (productId) {
+          this.productService.updateProduct(productId, product).subscribe(
+            (response) => {
+              console.log('Product updated successfully:', response);
+              this.successMessage = 'Product updated successfully';
+              this.errorMessage = null;
+
+              this.toggleProductForm();
+              this.productForm.reset();
+            },
+            (error) => {
+              console.error('Error updating product:', error);
+              this.successMessage = null;
+              this.errorMessage = 'Error updating product. Please try again.';
+            }
+          );
         }
       } else {
-        // Add new product
-        this.products.push(this.productForm.value);
+        this.productService.createProduct(product).subscribe(
+          (response) => {
+            this.toggleProductForm();
+            this.productForm.reset();
+            setTimeout(() => {
+              this.successMessage = 'Product created successfully';
+              this.errorMessage = null;
+            }, 2000);
+            this.getAllProducts();
+          },
+          (error) => {
+            console.error('Error creating product:', error);
+            this.successMessage = null;
+            this.errorMessage = 'Error creating product. Please try again.';
+          }
+        );
       }
-      this.toggleProductForm();
-      this.editMode = false;
-      this.productForm.reset();
+    } else {
+      console.error('Form is invalid. Cannot submit.');
     }
   }
 
-  onDeleteProduct(product: any) {
-    this.products = this.products.filter((p) => p !== product);
+  onDeleteProduct(product_id: string): void {
+    if (product_id) {
+      this.productService.deleteProduct(product_id).subscribe(
+        (response) => {
+          console.log('Product deleted successfully:', response);
+          this.successMessage = 'Product deleted successfully';
+          this.errorMessage = null;
+          this.getAllProducts();
+        },
+        (error) => {
+          console.error('Error deleting product:', error);
+          this.successMessage = null;
+          this.errorMessage = 'Error deleting product. Please try again.';
+        }
+      );
+    } else {
+      console.error('Product ID is undefined.');
+    }
   }
 }

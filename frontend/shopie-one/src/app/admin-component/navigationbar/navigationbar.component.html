@@ -5,7 +5,7 @@
         <div class="sub-menu-wrap" [ngClass]="{'active': isSubMenuActive}" id="subMenu">
             <div class="sub-menu">
                 <div class="user-info">
-                    <h3>James John</h3>
+                    <h4>{{userdetails?.username}}</h4>
                 </div>
                 <hr>
                 <a href="#" class="sub-menu-link">
@@ -13,7 +13,7 @@
                     <p>Profile</p>
                     <span>></span>
                 </a>
-                <a href="#" class="sub-menu-link">
+                <a (click)="logout()" class="sub-menu-link">
                     <i class="pi pi-sign-out"></i>
                     <p>Sign Out</p>
                     <span>></span>

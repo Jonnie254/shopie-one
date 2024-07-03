@@ -257,3 +257,63 @@ form label {
   color: red;
   text-align: left;
 }
+.error-message-top {
+  color: red;
+  text-align: center;
+  top: 10%;
+  background-color: #c9d6ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.success-message {
+  color: green;
+  text-align: center;
+  width: 300px;
+  background-color: #c9d6ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+/* Modal style */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%); /* Center the modal */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Ensure it's above the overlay */
+  font-size: 18px;
+  max-width: 90%;
+}
+
+.modalItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmDelete,
+.cancelDelete {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.confirmDelete {
+  background-color: red;
+  color: white;
+}
+
+.cancelDelete {
+  background-color: gray;
+  color: white;
+}
+.modal-con {
+  display: flex;
+}

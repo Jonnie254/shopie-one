@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { UserLogin } from '../../interfaces/users';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { LocalstorageService } from '../../services/localstorage.service';
 @Component({
   selector: 'app-login',
   standalone: true,
@@ -16,7 +17,11 @@ export class LoginComponent {
   loginError: boolean = false;
   loginSuccess: boolean = false;
   error: string = '';
-  constructor(private authservice: AuthService, private router: Router) {}
+  constructor(
+    private authservice: AuthService,
+    private router: Router,
+    private localstorageService: LocalstorageService
+  ) {}
   signInObj: UserLogin = {
     email: '',
     password: '',
@@ -27,11 +32,11 @@ export class LoginComponent {
         if (res.token) {
           this.authservice.checkDetails(res.token).subscribe(
             (response: any) => {
-              console.log(response.info?.id);
-              localStorage.setItem('token', res.token);
+              this.localstorageService.setItem('user_id', res.user_id);
+              this.localstorageService.setItem('token', res.token);
               setTimeout(() => {
                 this.loginSuccess = false;
-                if (res.info?.role === 'admin') {
+                if (res.role === 'admin') {
                   this.router.navigate(['/admin']);
                 } else {
                   this.router.navigate(['/admin']);
