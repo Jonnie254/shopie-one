@@ -1,0 +1,57 @@
+.wholenavbar {
+  display: flex;
+  align-items: center;
+  height: 15vh;
+  width: 92vw;
+  background-color: white;
+  margin-top: 15px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 15vh;
+  width: 70vw;
+  background-color: white;
+  border-radius: 10px;
+}
+.wholenavbar .shoppingicon img{
+  border-radius: 5px;
+}
+
+a {
+  color: rgb(20, 24, 88);
+  font-size: 20px;
+  margin-left: 30px;
+  padding: 10px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(165, 165, 165);
+}
+
+.shoppingicon img {
+  margin-left: 20px;
+  width: 200px;
+  height: 100px;
+}
+
+.shoppingicon p {
+  font-size: 20px;
+  color: rgb(20, 24, 88);
+}
+
+.shoppingicon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 15vh;
+  width: 20vw;
+  background-color: white;
+  border-radius: 10px;
+}

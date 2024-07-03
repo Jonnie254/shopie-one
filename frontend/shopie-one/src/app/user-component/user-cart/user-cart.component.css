@@ -1,0 +1,105 @@
+body {
+  height: auto;
+  width: 100vw;
+  background-color: rgb(221, 221, 221);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.usercart {
+  display: flex;
+  width: 92vw; /* Same width as app-user-navbar */
+  background-color: white; /* Background color white */
+  border-radius: 15px; /* Border radius for attractiveness */
+  padding: 20px; /* Padding for internal spacing */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  margin-top: 20px; /* Add some space above */
+  align-items: flex-end; /* Align items to the bottom */
+}
+
+.image {
+  flex: 1; /* Allow image to take up equal space */
+  display: flex;
+  justify-content: center;
+  align-items: flex-end; /* Align image to the bottom */
+  padding: 20px;
+}
+
+.image img {
+  max-width: 80%; /* Increase image size */
+  height: auto;
+  margin-bottom: 0; /* Ensure the image is aligned with the button */
+}
+
+.description {
+  flex: 2; /* Allow description to take up more space */
+  padding: 20px; /* Padding for internal spacing */
+}
+
+.description2 {
+  margin-bottom: 10px; /* Space below the description text */
+}
+
+.rating {
+  margin-bottom: 10px; /* Space below the rating stars */
+}
+
+.star {
+  color: gold; /* Star color */
+  font-size: 20px; /* Star size */
+}
+
+.price {
+  margin-bottom: 10px; /* Space below the price */
+  color: red;
+  font-weight: bold; /* Bold price */
+}
+
+.quantity {
+  display: flex; /* Ensure items are on the same line */
+  align-items: center; /* Align items vertically in the center */
+  margin-bottom: 10px; /* Space below the quantity section */
+}
+
+.quantity button {
+  background-color: rgb(20, 24, 88);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 5px; /* Padding inside the button */
+  cursor: pointer;
+  width: 30px; /* Set width to create a square shape */
+  height: 30px; /* Set height to create a square shape */
+  display: flex; /* Center the text within the button */
+  align-items: center;
+  justify-content: center;
+  margin: 0 5px; /* Add some margin between buttons */
+}
+
+.quantity button:hover {
+  background-color: rgb(106, 129, 255);
+}
+
+.quantity span {
+  margin: 0 10px; /* Add space around the number */
+  font-size: 16px; /* Increase font size for better visibility */
+}
+
+button {
+  background-color: rgb(20, 24, 88);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  display: block;
+  width: 100%; /* Full width button */
+  text-align: center;
+}
+
+button:hover {
+  background-color: rgb(106, 129, 255);
+}

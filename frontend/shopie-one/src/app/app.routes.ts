@@ -6,6 +6,8 @@ import { CustomerComponent } from './admin-component/customer/customer.component
 import { UserComponentComponent } from './user-component/user-component.component';
 import { RegisterComponent } from './admin-user/register/register.component';
 import { ProfileComponent } from './admin-user/profile/profile.component';
+import { UserNavbarComponent } from './user-component/user-navbar/user-navbar.component';
+import { UserCartComponent } from './user-component/user-cart/user-cart.component';
 
 export const routes: Routes = [
   { path: '', component: LoginComponent },
@@ -20,6 +22,7 @@ export const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
     ],
   },
-
   { path: 'users', component: UserComponentComponent },
+  { path: 'user-cart', component: UserCartComponent }
+
 ];

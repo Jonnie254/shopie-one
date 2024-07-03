@@ -1,17 +1,5 @@
 <body>
-  <div class="wholenavbar">
-    <div class="shoppingicon">
-      <img src="pexels-mali-296916.jpg" alt="">
-      <p>Shopping deals</p>
-    </div>
-    <div class="navbar">
-      <a href="">Home</a>
-      <a href="">Products</a>
-      <a href="">cart</a>
-      <a href="">user</a>
-      <img src="icons8-user-50.png" alt="">
-    </div>
-  </div>
+  <app-user-navbar></app-user-navbar>
 
   <div class="searchproducts">
     <div class="search-container">
@@ -30,159 +18,15 @@
 
   <div class="itemssection">
 
-
-    <P>Phones and Accessories</P>
-    <hr>
-    <div class="card">
-      <img src="/Screenshot 2024-07-02 112511.png" alt="">
-      <p>Itel</p>
+    <div class="card" *ngFor="let item of items">
+      <img [src]="item.img" alt="">
+      <p>{{ item.title }}</p>
       <br>
-      <p>Itel A70 6.6" HD+Water Drop Full Screen 128GB+8(3+5)GB RAM 4G</p>
-      <p class="price">Ksh. 12,000</p>
-    </div>
-    <div class="card">
-      <img src="/Earphones.png" alt="">
-      <p>Earphones</p>
-      <br>
-      <p>2024 New Black(Metal) Wired Earphones  </p>
-      <p class="price">Ksh. 199</p>
-    </div>
-    <div class="card">
-      <img src="/headphones.png" alt="">
-      <p>Headphones</p>
-      <br>
-      <p>The latest hot-selling P9 Pro Max headphones</p>
-      <p class="price">Ksh. 799</p>
-    </div>
-    <div class="card">
-      <img src="/bt.png" alt="">
-      <p>Bluetooth transmitter</p>
-      <br>
-      <p>Bluetooth Transmitter Receiver Wireless Audio 3.5mm Aux Adapter  </p>
-      <p class="price">Ksh. 399</p>
-    </div>
-    <div class="card">
-      <img src="/usb.png" alt="">
-      <p>USB</p>
-      <br>
-      <p>Mini Portable USB LED Book Light DC5V Ultra Bright Reading Book Lamp</p>
-      <p class="price">Ksh. 239</p>
+      <p>{{ item.description }}</p>
+      <p class="price">{{ item.price }}</p>
+      <button class="view-button" (click)="viewItem(item)">View</button>
     </div>
 
 
-    <p>Clothes</p>
-     <hr>
-     <div class="card">
-      <img src="/gown.png" alt="">
-      <p>Nightgowns</p>
-      <br>
-      <p>2pcs/Set Sexy lace Women Nightwear Nightgowns</p>
-      <p class="price">Ksh. 799</p>
-    </div>
-    <div class="card">
-      <img src="/short.png" alt="">
-      <p>Shorts</p>
-      <br>
-      <p>SXCHEN New Men's Shorts Casual Sports </p>
-      <p class="price">Ksh. 599</p>
-    </div>
-    <div class="card">
-      <img src="/biker.png" alt="">
-      <p>Pyjamas</p>
-      <br>
-      <p>3 In 1 Women's Pyjamas Shorts 3pcs Girl's Gym Yoga Home Yoga Beach Shorts Lady Clothing Women's Breathable Comfortable Bottoms</p>
-      <p class="price">Ksh. 999</p>
-    </div>
-    <div class="card">
-      <img src="/tisho.png" alt="">
-      <p>T-shirt</p>
-      <br>
-      <p>New Arrival Quick drying t-shirt men's summer new T-shirt training loose and breathable fitness running quick drying clothes short sleeves </p>
-      <p class="price">Ksh. 399</p>
-    </div>
-    <div class="card">
-      <img src="/lingerie.png" alt="">
-      <p>Bra</p>
-      <br>
-      <p>Women fashion cloth lady lingerie backless adjustable bra</p>
-      <p class="price">Ksh. 359</p>
-    </div>
-
-
-    <p>Handbags</p>
-     <hr>
-     <div class="card">
-      <img src="/handbag1.png" alt="">
-      <p>Slingbag</p>
-      <br>
-      <p>2Pcs/Set Large Size Women Handbag Lady PU Leather Shoulder Bag Ladies Handbags Sling Bags Hand Bags For Ladies Casual Soft Gift Big</p>
-      <p class="price">Ksh. 599</p>
-    </div>
-    <div class="card">
-      <img src="/handbag2.png" alt="">
-      <p>Tote handbag</p>
-      <br>
-      <p>4pcs Ladies Bag Set Women Handbags Shoulder Tote Sling Bags PU Leather Waterproof Kings Fashion </p>
-      <p class="price">Ksh. 849</p>
-    </div>
-    <div class="card">
-      <img src="/handbag3.png" alt="">
-      <p>Purse</p>
-      <br>
-      <p>3PCS Women Bags Handbags Ladies Bags Purse Lady Bags Set Tote Bags Hobo Bags Promotio Big Discount</p>
-      <p class="price">Ksh. 1,999</p>
-    </div>
-    <div class="card">
-      <img src="/handbag4.png" alt="">
-      <p>Shoulder bag</p>
-      <br>
-      <p>New Arrivals Ladies Bag Fashion Bag Women's Casual Trend Shoulder Bag Tote Bag Women Handbags Ladies Shoulder Bags </p>
-      <p class="price">Ksh. 699</p>
-    </div>
-    <div class="card">
-      <img src="/handbag5.png" alt="">
-      <p>Leather handbag</p>
-      <br>
-      <p>Women PU Leather Handbags Big Capacity Tote Bags Retro Double Strap Shoulder Bag Female Shopper bags</p>
-      <p class="price">Ksh. 799</p>
-    </div>
-
-    <p>Shoes</p>
-    <hr>
-    <div class="card">
-     <img src="/loafer.png" alt="">
-     <p>Loafers</p>
-     <br>
-     <p>Men's fashion loafers shoes comfortable driving shoes boy's non-slip cloth shoes sports shoes students flats athletic shoes breathable cloth shoes walking shoes</p>
-     <p class="price">Ksh. 999</p>
-   </div>
-   <div class="card">
-     <img src="/bake.png" alt="">
-     <p>Sneaker</p>
-     <br>
-     <p>ZZQLM Men's Shoes New Men's Basketball Shoes Indoor Non-Slip Training Shoes All-match Wear-resistant Outdoor Shoes Men's Sports Shoes Fashion Sneakers </p>
-     <p class="price">Ksh. 1,549</p>
-   </div>
-   <div class="card">
-     <img src="/sneaker.png" alt="">
-     <p>Air Cushion sneaker</p>
-     <br>
-     <p>Air Cushion Men Sport Running Shoes Fashion Sneakers Jogging Trainers Casual Lace-up Breathable Mesh Outdoor</p>
-     <p class="price">Ksh. 1,999</p>
-   </div>
-   <div class="card">
-     <img src="/women1.png" alt="">
-     <p>Sandals Heels</p>
-     <br>
-     <p>Ladies Shoes Women Shoes Sandals Heels Wedding Shoes Transparent Heels Dress Shoes Slippers Mules Clogs </p>
-     <p class="price">Ksh. 1,079</p>
-   </div>
-   <div class="card">
-     <img src="/women2.png" alt="">
-     <p>SXCHEN</p>
-     <br>
-     <p>SXCHEN Women's Shoes Boots Over-The-Knee Ladies Shoes Long Boots Women Boots New Edition Boots Show Slim Knee High Elastic Suede Boots for Women Boots For Girl Party Gift Style Boots In Black Fashion</p>
-     <p class="price">Ksh. 1,199</p>
-   </div>
   </div>
 </body>
