@@ -37,11 +37,15 @@ button {
 }
 
 td button:nth-child(1) {
-  background-color: #0298cf;
   border-radius: 10px;
+  background-color: #f44336;
 }
 
 td button:nth-child(2) {
+  background-color: #0298cf;
+  margin-left: 10px;
+}
+td button:nth-child(3) {
   background-color: #f44336;
   margin-left: 10px;
 }

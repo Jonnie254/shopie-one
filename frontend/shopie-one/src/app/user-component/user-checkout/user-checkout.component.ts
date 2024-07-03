@@ -13,20 +13,27 @@ import { CommonModule } from '@angular/common';
   imports: [RouterOutlet, UserNavbarComponent, CommonModule],
 })
 export class UserCheckoutComponent {
-  items: OrderDetails[] = [];
+  items: { product: OrderDetails; quantity: number }[] = [];
 
   constructor(private cartService: CartService) {
     this.loadCartItems();
-    this.items = this.cartService.getItems().map((item) => item.product);
   }
 
   loadCartItems() {
-    this.items = this.cartService.getItems().map((item) => item.product);
+    this.items = this.cartService.getItems();
   }
 
   removeItem(product_id: string) {
-    console.log('Removing item:', product_id);
     this.cartService.removeItem(product_id);
+    this.loadCartItems();
+  }
+  increaseQuantity(product_id: string) {
+    this.cartService.increaseQuantity(product_id);
+    this.loadCartItems();
+  }
+
+  decreaseQuantity(product_id: string) {
+    this.cartService.decreaseQuantity(product_id);
     this.loadCartItems();
   }
 }
