@@ -13,7 +13,7 @@ POST http://localhost:5700/users/login
 Content-Type: application/json
 
 {
-    "email": "John1@example.com",
+    "email": "mary12@gmail.com",
     "password": "password1"
 }
 
@@ -32,9 +32,10 @@ Content-Type: application/json
 
 
 ###CHANGE USER PASSWORD
-PUT http://localhost:5700/users/John1@example.com
+PUT http://localhost:5700/users/mary12@gmail.com
 Content-Type: application/json
 
 {
+
     "password": "password1"
 }
