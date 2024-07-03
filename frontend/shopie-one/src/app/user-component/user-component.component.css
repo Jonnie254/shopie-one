@@ -1,4 +1,4 @@
-body {
+.container {
   height: auto;
   width: 100vw;
   background-color: rgb(221, 221, 221);
@@ -29,7 +29,7 @@ body {
   background-color: white;
   border-radius: 10px;
 }
-.wholenavbar .shoppingicon img{
+.wholenavbar .shoppingicon img {
   border-radius: 5px;
 }
 
@@ -123,7 +123,6 @@ a:hover {
   border-radius: 5px;
 }
 
-
 .top-searches {
   margin-top: 10px;
   color: rgb(20, 24, 88);
@@ -150,7 +149,8 @@ a:hover {
 }
 
 .card {
-  width: calc(20% - 20px); /* Slim the card */
+  width: 300px; /* Set card width */
+  height: 300px;
   background-color: white; /* Change background color */
   border-radius: 15px; /* Add border radius */
   padding: 20px;
@@ -164,16 +164,16 @@ a:hover {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
 }
 .card img {
-  width: 100%; /* Ensure the image fits within the card */
-  height: auto;
+  width: 250px; /* Ensure the image fits within the card */
+  height: 150px; /* Set image height */
   margin-bottom: 10px; /* Add space below image */
 }
 
 .card p {
-  margin: 5px 0; /* Add space between paragraphs */
+  margin: 5px 0;
   overflow: hidden;
-  text-overflow: ellipsis; /* Ensure text does not overflow */
-  white-space: nowrap; /* Prevent text from wrapping */
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 /* Card button styles */
@@ -196,9 +196,7 @@ a:hover {
   transform: scale(1.05);
 }
 
-
 .price {
   color: red;
   font-weight: bold; /* Make price bold */
 }
-

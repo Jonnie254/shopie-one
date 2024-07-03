@@ -39,7 +39,7 @@ export class LoginComponent {
                 if (res.role === 'admin') {
                   this.router.navigate(['/admin']);
                 } else {
-                  this.router.navigate(['/admin']);
+                  this.router.navigate(['/users']);
                 }
               });
             },
