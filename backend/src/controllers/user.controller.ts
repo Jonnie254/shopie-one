@@ -12,7 +12,19 @@ export class UserController {
       return res.status(201).json(result);
     } catch (error) {
       return res.json({
-        error,
+        error
+      });
+    }
+  }
+
+  async getAllUsers(req: Request, res: Response){
+    try{
+      let result = await UserService.fetchAllUsers()
+
+      return res.status(201).json(result)
+    }catch (error) {
+      return res.json({
+        error
       });
     }
   }

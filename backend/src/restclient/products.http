@@ -31,7 +31,7 @@ Content-Type: application/json
     "product_description": "size 41, black, leather",
     "product_image": "qwertyuiopasdfghjklzxcvbnm",
     "product_price": "1600",
-    "product_quantity": "2",
+    "product_quantity": "10",
     "product_category": "Clothing"
 }
 
