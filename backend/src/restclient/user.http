@@ -3,9 +3,9 @@ POST http://localhost:5700/users/register
 Content-Type: application/json
 
 {
-    "username": "Timo",
-    "email": "John1@example.com",
-    "password": "john"
+    "username": "marshal",
+    "email": "marshal@example.com",
+    "password": "marshal"
 }
 
 ###LOGIN USER
@@ -13,9 +13,17 @@ POST http://localhost:5700/users/login
 Content-Type: application/json
 
 {
-    "email": "John1@example.com",
-    "password": "password1"
+    "email": "marshal@example.com",
+    "password": "password"
 }
+
+
+
+###FETCH ALL USERS
+GET http://localhost:5700/users/fetch-all-users
+Content-Type: application/json
+
+
 
 ### FETCH SINGLE USER
 GET http://localhost:5700/users/1edab374-b9a4-49c4-9c6a-b611b6817668
@@ -32,9 +40,9 @@ Content-Type: application/json
 
 
 ###CHANGE USER PASSWORD
-PUT http://localhost:5700/users/John1@example.com
+PUT http://localhost:5700/users/marshal@example.com
 Content-Type: application/json
 
 {
-    "password": "password1"
+    "password": "password"
 }

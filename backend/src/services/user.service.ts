@@ -48,6 +48,22 @@ export class userService {
     }
   }
 
+  async fetchAllUsers(){
+
+    let pool = await mssql.connect(sqlconfig)
+    let result = (await pool.query(`SELECT * FROM Users`)).recordset
+
+    if(result.length == 0){
+      return{
+        message: "No users found"
+      }
+    }else{
+      return{
+        users: result
+      }
+    }
+  }
+
   async fetchSingleUser(user_id: string) {
     let pool = await mssql.connect(sqlconfig);
     let user = (
@@ -102,7 +118,7 @@ export class userService {
 
   async updateUserDetails(email: string, password: string) {
     let pool = await mssql.connect(sqlconfig);
-    let user_password = v4();
+    let user_password = bcrypt.hashSync(password, 6);
     console.log(user_password);
     let emailExist = (
       await pool.request().query(`SELECT * FROM Users WHERE email = '${email}'`)

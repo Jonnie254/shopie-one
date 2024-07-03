@@ -7,6 +7,7 @@ let controller = new UserController()
 
 user_router.post('/register', controller.registerUser);
 user_router.post('/login', loginUser);
+user_router.get('/fetch-all-users', controller.getAllUsers)
 user_router.get('/:user_id', controller.getSingleUser);
 user_router.put('/switch-role', controller.switchRoles);
 user_router.put('/:email', controller.updateUser)

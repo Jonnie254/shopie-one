@@ -1,0 +1,11 @@
+### PLACE ORDER
+POST http://localhost:5700/orders/place-order
+Content-Type: application/json
+
+{
+    "user_id": "1edab374-b9a4-49c4-9c6a-b611b6817668",
+    "order_items": [
+        { "product_id": "05cc4ff3-0440-4391-9cac-33973afbd44e", "quantity": 2, "price": 1600.0 }  
+    ],
+    "total_price": 3200.0
+}

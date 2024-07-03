@@ -2,6 +2,6 @@ CREATE OR ALTER PROCEDURE fetchAllUsers
 AS
 BEGIN
     
-    SELECT *
+    SELECT username, email
     FROM Users;
 END
