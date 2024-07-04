@@ -35,26 +35,16 @@ PUT http://localhost:5700/users/switch-role
 Content-Type: application/json
 
 {
-    "user_id":"a8d96a5e-1d87-4611-8245-bdc24b7a6bb5"
+    "user_id":"7fd5268b-8575-4259-ae94-ff70cec66fcf"
 }
 
 
 ###CHANGE USER PASSWORD
-PUT http://localhost:5700/users/muchiri@example.com
+PUT http://localhost:5700/users/john1@gmail.com
 Content-Type: application/json
 
 {
-    "password": "password"
-}
-
-###UPDATE USER DETAILS
-PUT http://localhost:5700/users/updateUser/a8d96a5e-1d87-4611-8245-bdc24b7a6bb5
-Content-Type: application/json
-
-{
-    "username": "MuchiriT",
-    "email": "muchiri@example.com",
-    "password": "password"
+    "password": "12345678"
 }
 
 

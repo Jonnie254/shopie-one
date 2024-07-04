@@ -1,4 +1,12 @@
 <div class="main">
+    <div *ngIf="successMessage" class="success-message">
+        <i class="pi pi-check"></i>
+        <p>{{ successMessage }}</p>
+    </div>
+    <div *ngIf="errorMessage" class="error-message-top">
+        <i class="pi pi-times"></i>
+        <p>{{ errorMessage }}</p>
+    </div>
     <div class="container">
         <div class="header">
             <h3>Welcome to shopie</h3>
