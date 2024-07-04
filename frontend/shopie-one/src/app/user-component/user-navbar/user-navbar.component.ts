@@ -5,10 +5,8 @@ import { UserComponentComponent } from '../user-component.component';
 @Component({
   selector: 'app-user-navbar',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, RouterLink],
   templateUrl: './user-navbar.component.html',
-  styleUrl: './user-navbar.component.css'
+  styleUrl: './user-navbar.component.css',
 })
-export class UserNavbarComponent {
-
-}
+export class UserNavbarComponent {}

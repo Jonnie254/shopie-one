@@ -9,4 +9,5 @@
 body {
   font-family: "Poppins", sans-serif;
   background-color: #eaf1f3;
+  overflow-x: hidden;
 }
