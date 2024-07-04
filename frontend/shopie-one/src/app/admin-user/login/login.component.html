@@ -1,6 +1,8 @@
 <div class="main">
     <div *ngIf="successMessage" class="success-message">
-        <i class="pi pi-check"></i>
+        <div class="loading">
+            <i class="pi pi-spin pi-spinner" style="font-size: 1rem"></i>
+        </div>
         <p>{{ successMessage }}</p>
     </div>
     <div *ngIf="errorMessage" class="error-message-top">
