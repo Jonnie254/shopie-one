@@ -6,7 +6,6 @@ import { CustomerComponent } from './admin-component/customer/customer.component
 import { UserComponentComponent } from './user-component/user-component.component';
 import { RegisterComponent } from './admin-user/register/register.component';
 import { ProfileComponent } from './admin-user/profile/profile.component';
-import { UserNavbarComponent } from './user-component/user-navbar/user-navbar.component';
 import { UserCartComponent } from './user-component/user-cart/user-cart.component';
 import { ForgotPasswordComponent } from './admin-user/forgot-password/forgot-password.component';
 import { Login2Component } from './user-component/login2/login2.component';
@@ -29,7 +28,7 @@ export const routes: Routes = [
     ],
   },
   {
-    path: 'users',
+    path: 'user',
     component: Login2Component,
     children: [
       { path: 'view/:product_id', component: UserCartComponent },
