@@ -35,4 +35,48 @@ export class orderService {
             throw error;
         }
     }
+
+    async getAllOrders() {
+        let pool = await mssql.connect(sqlconfig);
+
+        try {
+            let result = await pool.request()
+                .execute('spGetAllOrders');
+
+            if(result.recordset.length == 0){
+                return {
+                    message: 'No orders found'
+                }
+            }
+
+            return {
+                orders: result.recordset
+            };
+        } catch (error) {
+            console.error('SQL ERROR', error);
+            throw error;
+        }
+    }
+
+    async getOrdersByUserId(user_id: string) {
+        let pool = await mssql.connect(sqlconfig);
+
+        try {
+            let result = await pool.request()
+                .input('user_id', mssql.NVarChar(255), user_id)
+                .execute('spGetOrdersByUserId');
+            if(result.recordset.length == 0){
+                return {
+                    message: 'No orders found for this user'
+                }
+            }
+            return {
+                message: 'Orders retrieved successfully',
+                orders: result.recordset
+            }
+        } catch (error) {
+            console.error('SQL ERROR', error);
+            throw error;
+        }
+    }
 }

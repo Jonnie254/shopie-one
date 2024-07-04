@@ -51,7 +51,7 @@ export class userService {
   async fetchAllUsers(){
 
     let pool = await mssql.connect(sqlconfig)
-    let result = (await pool.query(`SELECT * FROM Users`)).recordset
+    let result = (await pool.query(`SELECT * FROM Users WHERE role = 'user'`)).recordset
 
     if(result.length == 0){
       return{
