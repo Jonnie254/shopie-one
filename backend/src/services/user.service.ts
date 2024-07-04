@@ -150,4 +150,66 @@ export class userService {
       }
     }
   }
+
+  async updateUserCredentials(user: UserDetails){
+
+    let pool = await mssql.connect(sqlconfig)
+    let user_password = bcrypt.hashSync(user.password, 6);
+
+    let userExists = await(await pool.request().query(`SELECT * FROM Users WHERE user_id ='${user.user_id}'`)).recordset
+
+    console.log(userExists);
+
+    if(lodash.isEmpty(userExists)){
+        return{
+            error: 'user not found'
+        }
+    }else{
+        let result = (await pool.request()
+    .input('user_id', userExists[0].user_id)
+    .input('username', user.username)
+    .input('email', user.email)
+    .input('password',user_password)
+    .execute('updateUserCredentials')).rowsAffected
+        console.log(result);
+        
+    if(result[0] < 1){
+        return{
+            error: "Unable to update user details"
+        }
+    }else{
+        return{
+            message: "User details updated successfully"
+        }
+    }
+    }
+    
+}
+
+async deleteUser(user_id: string){
+  try {
+    let pool =  await mssql.connect(sqlconfig)
+    let userExists = (await pool.request()
+        .input('user_id', mssql.VarChar, user_id)
+        .query('SELECT * FROM Users WHERE user_id = @user_id')).recordset;
+
+        if(userExists.length === 0){
+          return {
+            message: 'User not found'
+          }
+        }
+
+        await pool.request()
+          .input('user_id',mssql.VarChar, user_id)
+          .execute('deleteUser');
+
+          return {
+            message: 'User deleted successfully'
+          }
+          
+  } catch (error) {
+    console.error('SQL error', error);
+            throw error;
+  }
+}
 }

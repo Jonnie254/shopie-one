@@ -73,4 +73,39 @@ export class UserController {
       });
     }
   }
+
+  async updateUserCredentials(req: Request, res: Response){
+
+    try {
+        let user_id = req.params.user_id
+        let {username, email, password} = req.body
+
+        let user= {
+            user_id: user_id,
+            username,
+            email,
+            password
+        }
+        let response = await UserService.updateUserCredentials(user)
+        return res.status(200).json(response)
+    } catch (error) {
+        return res.json({
+            error:error
+        })
+    }
+}
+
+async deleteUser(req: Request, res: Response){
+  try {
+    let {user_id} = req.params
+
+    let response = await UserService.deleteUser(user_id)
+    return res.status(200).json(response);
+
+  } catch (error) {
+      return res.json({
+        error: 'Error deleting user'
+    })
+  }
+}
 }

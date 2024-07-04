@@ -119,6 +119,7 @@ export class ProductsComponent {
   confirmDelete(): void {
     if (this.productToDelete && this.productToDelete.product_id) {
       this.onDeleteProduct(this.productToDelete.product_id);
+      this.hideDeleteModal();
     } else {
       console.error('Product ID is undefined.');
     }
@@ -162,6 +163,9 @@ export class ProductsComponent {
             (response) => {
               console.log('Product updated successfully:', response);
               this.successMessage = 'Product updated successfully';
+              setTimeout(() => {
+                this.successMessage = null;
+              }, 3000);
               this.errorMessage = null;
 
               this.toggleProductForm();
@@ -179,10 +183,10 @@ export class ProductsComponent {
           (response) => {
             this.toggleProductForm();
             this.productForm.reset();
+            this.successMessage = 'Product created successfully';
             setTimeout(() => {
-              this.successMessage = 'Product created successfully';
-              this.errorMessage = null;
-            }, 2000);
+              this.successMessage = null;
+            }, 3000);
             this.getAllProducts();
           },
           (error) => {
@@ -203,6 +207,9 @@ export class ProductsComponent {
         (response) => {
           console.log('Product deleted successfully:', response);
           this.successMessage = 'Product deleted successfully';
+          setTimeout(() => {
+            this.successMessage = null;
+          }, 3000);
           this.errorMessage = null;
           this.getAllProducts();
         },

@@ -10,6 +10,8 @@ import { CommonModule } from '@angular/common';
   styleUrl: './forgot-password.component.css'
 })
 export class ForgotPasswordComponent implements OnInit  {
+  successMessage: string | null = null;
+
   constructor(private ForgotPasswordService: ForgotPasswordService) { }
 
   ngOnInit(): void {}
@@ -19,10 +21,16 @@ export class ForgotPasswordComponent implements OnInit  {
       const { email, password } = form.value;
       this.ForgotPasswordService.resetPassword(email, password).subscribe(
         response => {
-          alert('Password reset successfully.');
+           this.successMessage = 'Password reset successfully.';
+          setTimeout(() => {
+            this.successMessage = null;
+          }, 3000);
         },
         error => {
-          alert('Error resetting password.');
+          this.successMessage = 'Error resetting password.';
+          setTimeout(() => {
+            this.successMessage = null;
+          }, 3000);
         }
       );
     }
