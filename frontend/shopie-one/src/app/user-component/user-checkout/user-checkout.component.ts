@@ -5,17 +5,28 @@ import { CheckoutDetails, OrderDetails } from '../../interfaces/order';
 import { CartService } from '../../services/local-storage-servic.service';
 import { CommonModule } from '@angular/common';
 import { OrderService } from '../../services/order.service';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-checkout',
   standalone: true,
   templateUrl: './user-checkout.component.html',
   styleUrl: './user-checkout.component.css',
-  imports: [RouterOutlet, UserNavbarComponent, CommonModule],
+  imports: [
+    RouterOutlet,
+    UserNavbarComponent,
+    CommonModule,
+    MatPaginatorModule,
+  ],
 })
 export class UserCheckoutComponent {
   items: { product: OrderDetails; quantity: number }[] = [];
   userId: string | null = null;
+  showConfirmationModal: boolean = false;
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+  showSuccessMessage = false;
+  showErrorMessage: boolean = false;
 
   constructor(
     private cartService: CartService,
@@ -25,10 +36,22 @@ export class UserCheckoutComponent {
     this.userId = localStorage.getItem('user_id');
   }
 
+  confirmCheckout() {
+    if (this.items.length === 0) {
+      this.showErrorMessage = true;
+      setTimeout(() => {
+        this.showErrorMessage = false;
+      }, 3000);
+    } else {
+      this.showConfirmationModal = true;
+    }
+  }
   loadCartItems() {
     this.items = this.cartService.getItems();
   }
-
+  cancel() {
+    this.showConfirmationModal = false;
+  }
   removeItem(product_id: string) {
     this.cartService.removeItem(product_id);
     this.loadCartItems();
@@ -43,6 +66,12 @@ export class UserCheckoutComponent {
     this.loadCartItems();
   }
   placeOrder() {
+    this.showConfirmationModal = false;
+    this.showSuccessMessage = true;
+
+    setTimeout(() => {
+      this.showSuccessMessage = false;
+    }, 3000);
     const orderItems: OrderDetails[] = this.items.map((item) => ({
       product_id: item.product.product_id,
       product_name: item.product.product_name,
