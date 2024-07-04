@@ -1,0 +1,22 @@
+<table>
+    <thead>
+        <tr>
+            <th>Order ID</th>
+            <th>Username</th>
+            <th>Product Name</th>
+            <th>Order Date</th>
+            <th>Total Price</th>
+            <th>Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let order of displayedOrders">
+            <td>{{ order.order_id }}</td>
+            <td>{{ order.username }}</td>
+            <td>{{ order.productName }}</td>
+            <td>{{ order.order_date }}</td>
+            <td>{{ order.total_price }}</td>
+            <td>{{ order.quantity }}</td>
+        </tr>
+    </tbody>
+</table>

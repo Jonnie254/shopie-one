@@ -10,4 +10,7 @@ export class OrderService {
   placeOrder(order: any) {
     return this.http.post('http://localhost:5700/orders/place-order', order);
   }
+  getAllOrders() {
+    return this.http.get('http://localhost:5700/orders/all-orders');
+  }
 }
