@@ -4,7 +4,7 @@
       <p>Manage Products</p>
       <div>
         <input placeholder="product" />
-        <button class="add_new" (click)="placeOrder()">Checkout</button>
+        <button class="add_new" (click)="confirmCheckout()">Checkout</button>
       </div>
     </div>
     <div class="table_selection">
@@ -36,6 +36,20 @@
           </tr>
         </tbody>
       </table>
+    </div>
+    <div *ngIf="showConfirmationModal" class="modal">
+      <div class="modal-content">
+        <h2>Confirm Checkout</h2>
+        <p>Are you sure you want to place this order?</p>
+        <button (click)="placeOrder()" class="place-order"><i class="pi pi-check" style="color: slateblue"></i></button>
+        <button (click)="cancel()" class="cancel-order"><i class="pi pi-times"></i></button>
+      </div>
+    </div>
+    <div *ngIf="showErrorMessage" class="error-message">
+      <p>Your cart is empty. Please add items before checking out.</p>
+    </div>
+    <div *ngIf="showSuccessMessage" class="success-message">
+      <p>Order placed successfully!</p>
     </div>
     <div class="pagination">
       <div><i class="pi pi-angle-double-left"></i></div>

@@ -9,3 +9,12 @@ Content-Type: application/json
     ],
     "total_price": 3200.0
 }
+
+###GET ALL ORDERS
+GET http://localhost:5700/orders/all-orders
+Content-Type: application/json
+
+
+###GET ORDER BY USER-ID
+GET http://localhost:5700/orders/user-orders/1edab374-b9a4-49c4-9c6a-b611b6817668
+Content-Type: application/json
