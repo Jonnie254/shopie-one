@@ -13,6 +13,7 @@ import { Login2Component } from './user-component/login2/login2.component';
 import { UserCheckoutComponent } from './user-component/user-checkout/user-checkout.component';
 
 export const routes: Routes = [
+  
   { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
