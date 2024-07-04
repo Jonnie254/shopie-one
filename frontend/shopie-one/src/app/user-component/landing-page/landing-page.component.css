@@ -1,0 +1,86 @@
+body {
+  padding: 50px;
+}
+
+.full-width {
+  margin-left: -50px; /* Equal to body padding */
+  margin-right: -50px; /* Equal to body padding */
+  width: calc(100% + 100px); /* 100% width plus twice the body padding */
+}
+
+.getstartedbutton {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Center the button vertically */
+}
+
+.styled-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 10px; /* Rounded corners */
+  background-color: rgb(61, 61, 224); /* Background color of the button */
+  color: white; /* Text color */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.styled-button:hover {
+  background-color: rgb(94, 94, 230); /* Background color on hover */
+  color: #fff; /* Text color on hover */
+}
+
+.pictures {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 15vw;
+  height: 30vh;
+  background-color: white;
+}
+
+.pictures img {
+  max-width: 100%;
+  height: auto;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.pictures1 {
+  display: flex;
+  background-color: white;
+  padding: 5px;
+  margin-top: 100px;
+  gap: 20px;
+}
+
+.shopieonline {
+  margin-top: 50px;
+}
+
+.partners {
+  background-color: white;
+  padding: 20px; /* Adds padding to slightly increase height */
+  margin-top: 30px; /* Adds margin to separate it from the div above */
+}
+
+.partners1 {
+  text-align: center; /* Centers the text within the div */
+}
+
+.partners2 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centers the images horizontally */
+  gap: 20px; /* Adds space between the images */
+}
+
+.partners2 img {
+  max-width: 100px; /* Ensures the images have a consistent size */
+  height: auto;
+}

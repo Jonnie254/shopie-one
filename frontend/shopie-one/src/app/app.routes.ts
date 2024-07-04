@@ -11,10 +11,11 @@ import { UserCartComponent } from './user-component/user-cart/user-cart.componen
 import { ForgotPasswordComponent } from './admin-user/forgot-password/forgot-password.component';
 import { Login2Component } from './user-component/login2/login2.component';
 import { UserCheckoutComponent } from './user-component/user-checkout/user-checkout.component';
+import { LandingPageComponent } from './user-component/landing-page/landing-page.component';
 
 export const routes: Routes = [
-  
-  { path: '', component: LoginComponent },
+  { path: '', component: LandingPageComponent },
+  { path: 'login', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'register', component: RegisterComponent },
