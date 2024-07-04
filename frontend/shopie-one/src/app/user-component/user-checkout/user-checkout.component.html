@@ -1,42 +1,49 @@
-<div class="table">
-  <div class="table_header">
-    <p>Manage Products</p>
-    <div>
-      <input placeholder="product" />
-      <button class="add_new">Checkout</button>
+<div class="container">
+  <div class="table">
+    <div class="table_header">
+      <p>Manage Products</p>
+      <div>
+        <input placeholder="product" />
+        <button class="add_new">Checkout</button>
+      </div>
     </div>
-  </div>
-  <div class="table_selection">
-    <table>
-      <thead>
-        <tr>
-          <th>Product</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of items">
-          <td>{{ item.product_name }}</td>
-          <td>{{ item.price }}</td>
-          <td>{{ item.quantity }}</td>
-          <td>
-            <button class="edit"><i class="pi pi-pen-to-square"></i></button>
-            <button class="delete" (click)="removeItem(item.product_id || '')">
-              <i class="pi pi-trash"></i>
-            </button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="pagination">
-    <div><i class="pi pi-angle-double-left"></i></div>
-    <div><i class="pi pi-angle-left"></i></div>
-    <div>1</div>
-    <div>2</div>
-    <div><i class="pi pi-angle-right"></i></div>
-    <div><i class="pi pi-angle-double-right"></i></div>
+    <div class="table_selection">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Price</th>
+            <th>Quantity</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of items">
+            <td>{{ item.product.product_name }}</td>
+            <td>{{ item.product.price }}</td>
+            <td>{{ item.quantity }}</td>
+            <td>
+              <button class="edit" (click)="decreaseQuantity(item.product.product_id || '')">
+                <i class="pi pi-minus"></i>
+              </button>
+              <button class="delete" (click)="increaseQuantity(item.product.product_id || '')">
+                <i class="pi pi-plus"></i>
+              </button>
+              <button class="delete" (click)="removeItem(item.product.product_id || '')">
+                <i class="pi pi-trash"></i>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pagination">
+      <div><i class="pi pi-angle-double-left"></i></div>
+      <div><i class="pi pi-angle-left"></i></div>
+      <div>1</div>
+      <div>2</div>
+      <div><i class="pi pi-angle-right"></i></div>
+      <div><i class="pi pi-angle-double-right"></i></div>
+    </div>
   </div>
 </div>

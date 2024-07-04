@@ -5,7 +5,8 @@
   <div class="navbar">
     <a href="">Home</a>
     <a routerLink="products">Products</a>
-    <a routerLink="checkout">cart</a>
+    <a routerLink="checkout">Cart</a>
+    <span *ngIf="itemCount > 0" class="badge">{{ itemCount }}</span>
     <a href="">user</a>
     <img src="icons8-user-50.png" alt="">
   </div>

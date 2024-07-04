@@ -37,6 +37,7 @@ export class UserCartComponent {
   addToCart() {
     if (this.product) {
       this.cartService.addToCart({
+        product_id: this.product.product_id,
         product_name: this.product.product_name,
         quantity: 1,
         price: this.product.product_price,
