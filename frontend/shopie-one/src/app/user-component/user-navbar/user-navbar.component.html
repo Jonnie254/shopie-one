@@ -1,13 +1,33 @@
-<div class="wholenavbar">
-  <div class="shoppingicon">
-    <p>Shopping deals</p>
-  </div>
-  <div class="navbar">
-    <a href="">Home</a>
-    <a routerLink="products">Products</a>
-    <a routerLink="checkout">Cart</a>
-    <span *ngIf="itemCount > 0" class="badge">{{ itemCount }}</span>
-    <a href="">user</a>
-    <img src="icons8-user-50.png" alt="">
+<div class="container">
+  <div class="wholenavbar">
+    <div class="shoppingicon">
+      <img src="e-logo.png" alt="">
+      <p>Shopping deals</p>
+    </div>
+    <div class="navbar">
+      <a href="">Home</a>
+      <a routerLink="products">Products</a>
+      <a routerLink="checkout">Cart</a>
+      <span *ngIf="itemCount > 0" class="badge">{{ itemCount }}</span>
+      <img src="profilepic.svg" alt="" class="avatar" (click)="toggleMenu()">
+      <div class="sub-menu-wrap" [ngClass]="{'active': isSubMenuActive}" id="subMenu">
+        <div class="sub-menu">
+          <div class="user-info">
+            <h4>{{userdetails?.username}}</h4>
+          </div>
+          <hr>
+          <a href="#" class="sub-menu-link">
+            <i class="pi pi-user-edit"></i>
+            <p>Profile</p>
+            <span>></span>
+          </a>
+          <a (click)="logout()" class="sub-menu-link">
+            <i class="pi pi-sign-out"></i>
+            <p>Sign Out</p>
+            <span>></span>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

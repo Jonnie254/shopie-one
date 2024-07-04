@@ -16,8 +16,7 @@
     <div class="card" *ngFor="let product of products; let i = index">
       <img [src]="product.product_image" alt="">
       <p>{{ product.product_name}}</p>
-      <p>{{ product.product_price }}</p>
-      <!-- <button class="view-button" routerLink="login">Add to cart</button> -->
+      <p>KSh {{ product.product_price }}</p>
       <button class="view-button" (click)="navitagateToProduct(i)">View</button>
     </div>
   </div>

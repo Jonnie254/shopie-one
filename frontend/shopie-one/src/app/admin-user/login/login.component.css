@@ -7,6 +7,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   height: 100vh;
   padding: 0 20px;
 }
@@ -141,6 +142,27 @@ button:hover {
 .error-message {
   color: red;
   text-align: left;
+}
+
+.error-message-top {
+  color: red;
+  text-align: center;
+  top: 10%;
+  background-color: #c9d6ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.success-message {
+  color: green;
+  text-align: center;
+  width: 300px;
+  background-color: #c9d6ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
 }
 form p a {
   margin-top: 5px;

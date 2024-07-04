@@ -149,9 +149,6 @@ export class ProductsComponent {
   }
 
   createProduct() {
-    console.log('Form Validity:', this.productForm.valid);
-    console.log('Form Values:', this.productForm.value);
-
     if (this.productForm.valid) {
       const product = this.productForm.value;
 
@@ -163,14 +160,15 @@ export class ProductsComponent {
               console.log('Product updated successfully:', response);
               this.successMessage = 'Product updated successfully';
               this.errorMessage = null;
-
               this.toggleProductForm();
               this.productForm.reset();
+              this.clearMessagesAfterTimeout();
             },
             (error) => {
               console.error('Error updating product:', error);
               this.successMessage = null;
               this.errorMessage = 'Error updating product. Please try again.';
+              this.clearMessagesAfterTimeout();
             }
           );
         }
@@ -184,11 +182,13 @@ export class ProductsComponent {
               this.errorMessage = null;
             }, 2000);
             this.getAllProducts();
+            this.clearMessagesAfterTimeout();
           },
           (error) => {
             console.error('Error creating product:', error);
             this.successMessage = null;
             this.errorMessage = 'Error creating product. Please try again.';
+            this.clearMessagesAfterTimeout();
           }
         );
       }
@@ -205,15 +205,23 @@ export class ProductsComponent {
           this.successMessage = 'Product deleted successfully';
           this.errorMessage = null;
           this.getAllProducts();
+          this.clearMessagesAfterTimeout();
         },
         (error) => {
           console.error('Error deleting product:', error);
           this.successMessage = null;
           this.errorMessage = 'Error deleting product. Please try again.';
+          this.clearMessagesAfterTimeout();
         }
       );
     } else {
       console.error('Product ID is undefined.');
     }
+  }
+  private clearMessagesAfterTimeout() {
+    setTimeout(() => {
+      this.successMessage = null;
+      this.errorMessage = null;
+    }, 3000);
   }
 }

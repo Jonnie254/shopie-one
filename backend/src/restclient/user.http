@@ -35,14 +35,14 @@ PUT http://localhost:5700/users/switch-role
 Content-Type: application/json
 
 {
-    "user_id":"58084774-3d48-4fa0-8df5-f64f6561d69f"
+    "user_id":"7fd5268b-8575-4259-ae94-ff70cec66fcf"
 }
 
 
 ###CHANGE USER PASSWORD
-PUT http://localhost:5700/users/John1@example.com
+PUT http://localhost:5700/users/john1@gmail.com
 Content-Type: application/json
 
 {
-    "password": "password1"
+    "password": "12345678"
 }

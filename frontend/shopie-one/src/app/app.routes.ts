@@ -21,6 +21,7 @@ export const routes: Routes = [
     path: 'admin',
     component: SidebarComponent,
     children: [
+      { path: '', component: CustomerComponent },
       { path: 'product', component: ProductsComponent },
       { path: 'customer', component: CustomerComponent },
       { path: 'profile', component: ProfileComponent },
