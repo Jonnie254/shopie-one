@@ -39,7 +39,7 @@ export class UserComponentComponent {
   navitagateToProduct(index: number) {
     let product = this.products[index];
     let product_id = product.product_id;
-    this.Router.navigate(['users/view', product_id]);
+    this.Router.navigate(['user/view', product_id]);
   }
   getAllProducts() {
     this.productservice.getProducts().subscribe(
