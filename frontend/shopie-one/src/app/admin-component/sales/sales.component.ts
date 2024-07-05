@@ -13,7 +13,7 @@ export class SalesComponent {
   orders: any[] = [];
   displayedOrders: any[] = [];
   currentPage: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 6;
 
   constructor(private orderService: OrderService) {
     this.fetchOrders();
