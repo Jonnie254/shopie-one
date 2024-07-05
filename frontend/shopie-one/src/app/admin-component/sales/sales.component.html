@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="table">
+        <div class="table_header">
+            <p>Manage Orders</p>
+            <div>
+                <input placeholder="product" />
+            </div>
+        </div>
+        <div class="table_selection">
+            <table>
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Username</th>
+                        <th>Product Name</th>
+                        <th>Order Date</th>
+                        <th>Total Price</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let order of displayedOrders; let i = index">
+                        <td>{{ i + 1 + (currentPage - 1) * itemsPerPage }}</td>
+                        <td>{{ order.username }}</td>
+                        <td>{{ order.product_name }}</td>
+                        <td>{{ order.order_date | date }}</td>
+                        <td>{{ order.total_price }}</td>
+                        <td>{{ order.quantity }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination">
+            <div (click)="goToPage(1)"><i class="pi pi-angle-double-left"></i></div>
+            <div (click)="previousPage()"><i class="pi pi-angle-left"></i></div>
+            <div *ngFor="let page of [].constructor(totalPages()); let pageIndex = index"
+                (click)="goToPage(pageIndex + 1)">
+                {{ pageIndex + 1 }}
+            </div>
+            <div (click)="nextPage()"><i class="pi pi-angle-right"></i></div>
+            <div (click)="goToPage(totalPages())"><i class="pi pi-angle-double-right"></i></div>
+        </div>
+    </div>
+</div>

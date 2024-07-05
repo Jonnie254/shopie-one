@@ -3,13 +3,14 @@ import { RouterLink, RouterOutlet } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
 import { Router } from '@angular/router';
 import { LocalstorageService } from '../../services/localstorage.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.css',
-  imports: [RouterOutlet, RouterLink, HomeComponent],
+  imports: [RouterOutlet, RouterLink, HomeComponent, CommonModule],
 })
 export class SidebarComponent {
   constructor(

@@ -1,0 +1,45 @@
+<div class="container">
+    <h1>Analytics</h1>
+    <div class="analytics">
+        <div class="item">
+            <div class="progress">
+                <div class="info">
+                    <h5>Revenue</h5>
+                    <p style="font-size: 16px;">Total Revenue: {{ totalRevenue | currency: 'KES': 'symbol':'1.0-0' }}
+                    </p>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+            <i class='pi pi-pound'></i>
+        </div>
+        <div class="item">
+            <div class="progress">
+                <div class="info">
+                    <h5>Customers</h5>
+                    <p style="font-size: 16px;">Total Customer: {{totalUsers}}</p>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+            <i class='pi pi-users'></i>
+        </div>
+        <div class="item">
+            <div class="progress">
+                <div class="info">
+                    <h5>Product</h5>
+                    <p style="font-size: 16px;">Total Products: {{totalProducts}}</p>
+                </div>
+                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
+                </div>
+            </div>
+            <i class='pi pi-barcode'></i>
+        </div>
+    </div>
+    <div class="chart">
+        <div class="card">
+            <p-chart type="bar" [data]="ordersPerDayChart"></p-chart>
+
+        </div>
+    </div>
+</div>

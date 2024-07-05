@@ -13,10 +13,14 @@ import { FormsModule } from '@angular/forms';
 })
 export class CustomerComponent {
   showProductForm: boolean = false;
-  user: UserDetails[] =[];
+  users: UserDetails[] = [];
   showOverlay: boolean = false;
   selectedUser: UserDetails | null = null;
-  isEditMode: boolean = false; 
+  isEditMode: boolean = false;
+  displayedUsers: UserDetails[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 4;
+
   constructor(private userservice: UsersService) {}
 
   ngOnInit() {
@@ -25,8 +29,38 @@ export class CustomerComponent {
 
   getUsers() {
     this.userservice.getAllUsers().subscribe((response: any) => {
-      this.user = response.users;
+      this.users = response.users;
+      this.updateDisplayedUsers();
     });
+  }
+
+  updateDisplayedUsers() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.displayedUsers = this.users.slice(startIndex, endIndex);
+  }
+
+  goToPage(page: number) {
+    this.currentPage = page;
+    this.updateDisplayedUsers();
+  }
+
+  nextPage() {
+    if (this.currentPage < this.totalPages()) {
+      this.currentPage++;
+      this.updateDisplayedUsers();
+    }
+  }
+
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedUsers();
+    }
+  }
+
+  totalPages() {
+    return Math.ceil(this.users.length / this.itemsPerPage);
   }
 
   toggleProductForm(user?: UserDetails) {

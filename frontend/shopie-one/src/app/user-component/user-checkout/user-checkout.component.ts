@@ -14,7 +14,7 @@ import { OrderService } from '../../services/order.service';
   imports: [
     RouterOutlet,
     UserNavbarComponent,
-    CommonModule,
+    CommonModule
   ],
 })
 export class UserCheckoutComponent {
