@@ -1,5 +1,7 @@
 body {
   padding: 50px;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .full-width {
@@ -53,6 +55,8 @@ body {
 
 .pictures1 {
   display: flex;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+  justify-content: center; /* Center items horizontally */
   background-color: white;
   padding: 5px;
   margin-top: 100px;
@@ -83,4 +87,54 @@ body {
 .partners2 img {
   max-width: 100px; /* Ensures the images have a consistent size */
   height: auto;
+}
+
+/* Responsive Design */
+
+@media (max-width: 1200px) {
+  .pictures {
+    width: 20vw;
+  }
+}
+
+@media (max-width: 992px) {
+  .pictures {
+    width: 25vw;
+  }
+}
+
+@media (max-width: 768px) {
+  .pictures {
+    width: 40vw;
+  }
+
+  .shopieonline {
+    padding: 10px;
+  }
+
+  body {
+    padding: 20px;
+  }
+
+  .full-width {
+    margin-left: -20px;
+    margin-right: -20px;
+    width: calc(100% + 40px);
+  }
+}
+
+@media (max-width: 576px) {
+  .pictures {
+    width: 80vw;
+  }
+
+  .full-width {
+    margin-left: -10px;
+    margin-right: -10px;
+    width: calc(100% + 20px);
+  }
+
+  body {
+    padding: 10px;
+  }
 }

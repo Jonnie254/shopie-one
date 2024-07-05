@@ -11,20 +11,21 @@ body {
 
 .usercart {
   display: flex;
+  flex-direction: row;
   width: 92vw;
   background-color: white;
   border-radius: 15px;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 
 .image {
   flex: 1;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 20px;
 }
 
@@ -102,4 +103,46 @@ button {
 
 button:hover {
   background-color: rgb(106, 129, 255);
+}
+
+/* Responsive Design */
+
+@media (max-width: 768px) {
+  .usercart {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .description {
+    text-align: center;
+    padding: 10px;
+  }
+
+  .image img {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .usercart {
+    width: 100%;
+    padding: 10px;
+  }
+
+  .description {
+    padding: 10px;
+  }
+
+  .quantity {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .quantity span {
+    margin: 10px 0;
+  }
+
+  button {
+    width: auto;
+  }
 }

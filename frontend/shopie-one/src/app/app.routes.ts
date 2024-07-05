@@ -14,8 +14,8 @@ import { UserCheckoutComponent } from './user-component/user-checkout/user-check
 import { LandingPageComponent } from './user-component/landing-page/landing-page.component';
 
 export const routes: Routes = [
-  { path: '', component: LandingPageComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'landing', component: LandingPageComponent },
+  { path: '', component: LoginComponent },
   { path: 'login', component: LoginComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'register', component: RegisterComponent },
