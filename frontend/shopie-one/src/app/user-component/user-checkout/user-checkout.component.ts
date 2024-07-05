@@ -5,7 +5,6 @@ import { CheckoutDetails, OrderDetails } from '../../interfaces/order';
 import { CartService } from '../../services/local-storage-servic.service';
 import { CommonModule } from '@angular/common';
 import { OrderService } from '../../services/order.service';
-import { MatPaginatorModule } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-checkout',
@@ -16,7 +15,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     RouterOutlet,
     UserNavbarComponent,
     CommonModule,
-    MatPaginatorModule,
   ],
 })
 export class UserCheckoutComponent {
