@@ -1,0 +1,111 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: var(--color-dark);
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.analytics {
+  display: flex;
+  margin: 20px;
+  gap: 20px;
+  justify-content: space-between;
+}
+.analytics .item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 140px;
+  min-width: 350px;
+  padding: 20px;
+  border-radius: 20px;
+}
+.analytics .item .progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.analytics .item .progress .info h5 {
+  color: #000;
+  font-size: 20px;
+  font-weight: bold;
+}
+.analytics .item .progress .info p {
+  color: #fff;
+  font-size: 12px;
+}
+.analytics .item .progress .progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+}
+.analytics .item:nth-child(1) .progress .progress-bar {
+  background: radial-gradient(closest-side, #006ed3 79%, transparent 80% 100%),
+    conic-gradient(#208bee 25%, #fff 0%);
+}
+.analytics .item:nth-child(2) .progress .progress-bar {
+  background: radial-gradient(closest-side, #ff993a 79%, transparent 80% 100%),
+    conic-gradient(#ff7e07 50%, #fff 0%);
+}
+.analytics .item:nth-child(3) .progress .progress-bar {
+  background: radial-gradient(closest-side, #8ac53e 79%, transparent 80% 100%),
+    conic-gradient(#6eb33d 75%, #fff 0%);
+}
+.analytics .item:nth-child(4) .progress .progress-bar {
+  background: radial-gradient(closest-side, #ffd043 79%, transparent 80% 100%),
+    conic-gradient(#ffc000 25%, #fff 0%);
+}
+.analytics .item .progress .progress-bar::before {
+  font-size: 10px;
+  color: #fff;
+}
+.analytics .item:nth-child(1) .progress .progress-bar::before,
+.analytics .item:nth-child(4) .progress .progress-bar::before {
+  content: "75%";
+}
+.analytics .item:nth-child(2) .progress .progress-bar::before {
+  content: "50%";
+}
+.analytics .item:nth-child(3) .progress .progress-bar::before {
+  content: "25%";
+}
+.analytics .item i {
+  font-size: 80px;
+  color: #fff;
+}
+.analytics .item:nth-child(1) {
+  background: #006ed3;
+}
+.analytics .item:nth-child(2) {
+  background: #ff993a;
+}
+.analytics .item:nth-child(3) {
+  background: #8ac53e;
+}
+.analytics .item:nth-child(4) {
+  background: #ffd043;
+}
+
+.chart {
+  margin: 3rem;
+  background-color: var(--color-white);
+}
+
+.card {
+  width: 500px;
+  background-color: #fff;
+  border-radius: 10px;
+}

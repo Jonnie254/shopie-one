@@ -19,3 +19,4 @@ BEGIN
     JOIN Users u ON o.user_id = u.user_id
     JOIN Products p ON oi.product_id = p.product_id;
 END;
+

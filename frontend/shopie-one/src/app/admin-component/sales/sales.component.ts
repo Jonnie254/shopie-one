@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { OrderService } from '../../services/order.service';
-import { forkJoin } from 'rxjs';
-import { map, mergeMap } from 'rxjs/operators';
-import { UsersService } from '../../services/users.service';
-import { ProductService } from '../../services/product.service';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -13,46 +9,48 @@ import { CommonModule } from '@angular/common';
   templateUrl: './sales.component.html',
   styleUrl: './sales.component.css',
 })
-export class SalesComponent implements OnInit {
+export class SalesComponent {
   orders: any[] = [];
   displayedOrders: any[] = [];
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
 
-  constructor(
-    private orderService: OrderService,
-    private usersService: UsersService,
-    private productService: ProductService
-  ) {}
-
-  ngOnInit() {
+  constructor(private orderService: OrderService) {
     this.fetchOrders();
   }
 
   fetchOrders() {
     this.orderService.getAllOrders().subscribe((orders: any) => {
       this.orders = orders.orders;
-      this.populateOrderDetails();
+      this.displayedOrders = orders.orders;
     });
   }
 
-  populateOrderDetails() {
-    const userRequests = this.orders.map((order) =>
-      this.usersService.getUserDetails(order.user_id)
-    );
-    const productRequests = this.orders.map((order) =>
-      this.productService.getProduct(order.product_id)
-    );
+  updateDisplayedOrders() {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    this.displayedOrders = this.orders.slice(startIndex, endIndex);
+  }
+  goToPage(page: number) {
+    this.currentPage = page;
+    this.updateDisplayedOrders();
+  }
 
-    forkJoin([...userRequests, ...productRequests]).subscribe(
-      (responses: any) => {
-        const users = responses.slice(0, this.orders.length);
-        const products = responses.slice(this.orders.length);
+  nextPage() {
+    if (this.currentPage < this.totalPages()) {
+      this.currentPage++;
+      this.updateDisplayedOrders();
+    }
+  }
 
-        this.displayedOrders = this.orders.map((order, index) => ({
-          ...order,
-          username: users[index].name,
-          productName: products[index].name,
-        }));
-      }
-    );
+  previousPage() {
+    if (this.currentPage > 1) {
+      this.currentPage--;
+      this.updateDisplayedOrders();
+    }
+  }
+
+  totalPages() {
+    return Math.ceil(this.orders.length / this.itemsPerPage);
   }
 }

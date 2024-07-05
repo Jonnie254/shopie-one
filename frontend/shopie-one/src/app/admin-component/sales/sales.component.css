@@ -1,0 +1,323 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 20px;
+  background-color: #f5f5f5;
+}
+
+.table-container {
+  position: relative;
+  z-index: 1;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+}
+
+.table_header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+  background-color: #f5f5f5;
+  flex-wrap: wrap;
+}
+
+.table_header h3 {
+  font-size: 24px;
+  color: #11101d;
+}
+
+button {
+  outline: none;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 10px;
+  color: #ffffff;
+}
+
+td button:nth-child(1) {
+  background-color: #0298cf;
+  border-radius: 10px;
+}
+
+td button:nth-child(2) {
+  background-color: #f44336;
+  margin-left: 10px;
+}
+
+.add_new {
+  padding: 10px 20px;
+  color: #ffffff;
+  background-color: #0298cf;
+}
+
+input {
+  padding: 10px 20px;
+  margin: 0 10px;
+  outline: none;
+  border: 1px solid #0298cf;
+  border-radius: 6px;
+  color: #0298cf;
+}
+
+.table_selection {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  table-layout: fixed;
+  min-width: 900px;
+  border-collapse: collapse;
+}
+
+thead th {
+  position: sticky;
+  top: 0;
+  background-color: #f6f9fc;
+  color: #8493a5;
+  font-size: 15px;
+  padding: 5px;
+}
+
+th,
+td {
+  border-bottom: 1px solid #dddddd;
+  text-align: left;
+  padding: 5px 10px;
+}
+
+tbody tr {
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+tbody tr td {
+  font-size: 14px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  padding: 10px;
+  gap: 2px;
+  border-top: 1px solid #dddddd;
+}
+
+.pagination div {
+  padding: 10px;
+  border: 2px solid #d5d0d0;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: #d5d0d0;
+  font-size: 15px;
+}
+
+.pagination div:hover {
+  background-color: #0298cf;
+  color: #ffffff;
+}
+
+::placeholder {
+  color: #0298cf;
+}
+
+::-webkit-scrollbar {
+  height: 5px;
+  width: 5px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: insert 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #0298cf;
+}
+/* add form */
+.product-form {
+  position: absolute;
+  z-index: 1;
+  left: 40%;
+  background-color: #f5f5f5;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+  width: 400px;
+  font-size: 12px;
+  transition: visibility 0.5s;
+  visibility: hidden;
+}
+.product-form.visible {
+  visibility: visible;
+}
+.heading {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.heading i {
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 5px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+form input,
+form select,
+form textarea {
+  padding: 10px;
+  border: 1px solid #0298cf;
+  border-radius: 6px;
+  outline: none;
+  width: 100%;
+}
+form label {
+  font-size: 14px;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.price-quantity {
+  display: flex;
+  gap: 10px;
+}
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  background-color: #0298cf;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.buttons button:hover {
+  background-color: #0278a9;
+}
+.btn {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.add {
+  margin-right: 10px;
+}
+
+.update {
+  background-color: #f44336;
+}
+
+.update:hover {
+  background-color: #d63027;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+  z-index: 1000; /* Ensure it's above other content */
+  display: none;
+}
+
+.overlay.visible {
+  display: block;
+}
+.error-message {
+  color: red;
+  text-align: left;
+}
+.error-message-top {
+  color: red;
+  text-align: center;
+  top: 10%;
+  background-color: #c9d6ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+.success-message {
+  color: green;
+  text-align: center;
+  width: 300px;
+  background-color: #c9d6ff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+/* Modal style */
+.modal-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  padding: 20px;
+  transform: translate(-50%, -50%); /* Center the modal */
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10; /* Ensure it's above the overlay */
+  font-size: 18px;
+  max-width: 90%;
+}
+
+.modalItems {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirmDelete,
+.cancelDelete {
+  margin: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+.confirmDelete {
+  background-color: red;
+  color: white;
+}
+
+.cancelDelete {
+  background-color: gray;
+  color: white;
+}
+.modal-con {
+  display: flex;
+}
